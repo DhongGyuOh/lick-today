@@ -67,25 +67,20 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
+---
 ## 배포
+이 프로젝트는 **Vercel**을 통해 자동 배포됩니다.
+### 최초 설정
+1. GitHub 저장소를 Vercel에 Import
+2. Framework를 **Next.js**로 선택 (자동 감지)
+3. Deploy
 
-### 옵션 A. GitHub Actions 자동 배포 (권장)
-1. 저장소 Settings → Pages → Source를 "GitHub Actions"로 설정
-2. `main`에 push하면 `.github/workflows/deploy.yml`이 자동 빌드/배포
-
-### 옵션 B. 완전 수동 배포 (gh-pages 브랜치)
+### 이후 배포
 ```bash
-npm run build:gh          # out/ 폴더 생성 (basePath 포함)
-npx gh-pages -d out        # gh-pages 브랜치로 out/ 내용 push
+git push
 ```
-(`npx gh-pages`는 최초 1회 `npm install -D gh-pages` 필요)
-
-## 리포지토리 이름을 바꾼다면
-
-`next.config.ts`의 `repoName` 값을 실제 GitHub 저장소 이름과 동일하게 수정하세요.
-(`https://<user>.github.io/<repo>/` 형태의 project page 기준. 커스텀 도메인이나
-유저 페이지(`<user>.github.io`)를 쓴다면 `isGithubPages` 분기를 제거하고 basePath를
-항상 빈 문자열로 두면 됩니다.)
+만 하면 Vercel이 자동으로 최신 버전을 빌드하고 배포합니다.
+---
 
 ## 폴더 구조
 
