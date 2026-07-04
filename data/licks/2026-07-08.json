@@ -1,0 +1,60 @@
+{
+  "date": "2026-07-08",
+  "licks": [
+    {
+      "id": "2026-07-08-01",
+      "title": "SRV풍 텍사스 셔플 리프",
+      "key": "E major",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 120,
+      "theory": "텍사스 블루스 셔플의 대표 리듬으로, 저음 줄에서 5-6도 음을 오가는 부기우기 패턴입니다. SRV는 이 패턴을 강한 다운피킹과 함께 매우 타이트하게 연주했습니다. 셔플 리듬(스윙感)을 살려 연습하세요.",
+      "tags": ["srv", "texas-shuffle", "boogie", "blues"],
+      "alphaTex": "\\title \"SRV Style Texas Shuffle Riff\"\n\\tempo 120\n.\n:8 0.5 2.5 0.5 2.5 0.5 2.5 0.5 2.5 |\n:8 0.5 2.5 0.5 2.5 0.5 2.5 0.5 2.5 |\n:8 0.4 2.4 0.4 2.4 0.5 2.5 0.5 2.5 |\n:8 0.5 2.5 0.5 2.5 0.5 2.5 0.5 2.5 |"
+    },
+    {
+      "id": "2026-07-08-02",
+      "title": "SRV풍 어그레시브 벤드 릭",
+      "key": "D minor",
+      "style": "Blues",
+      "difficulty": "Advanced",
+      "bpm": 130,
+      "theory": "무거운 게이지 스트링을 강하게 벤딩하는 SRV 특유의 파워풀한 어택을 표현한 릭입니다. 벤드 직후 격렬한 비브라토로 이어가며, 피킹은 강하고 공격적으로 접근하세요.",
+      "tags": ["srv", "aggressive-bend", "blues", "advanced"],
+      "alphaTex": "\\title \"SRV Style Aggressive Bend Lick\"\n\\tempo 130\n.\n:8 8.3{b (0 4)}{v} r r r 6.2 8.2{h} r r |\n:8 6.2 8.2{b (0 4)}{v} r r r r r r |\n:8 8.3{b (0 4)}{v} r r r 6.2 8.2{h} r r |\n:4 6.1{b (0 4)}{v} r |"
+    },
+    {
+      "id": "2026-07-08-03",
+      "title": "SRV풍 저음줄 로우 E 리프",
+      "key": "E minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 140,
+      "theory": "개방 6번줄(로우 E)을 축으로 반복하며 긴장감을 쌓는 로우 스트링 리프입니다. 오른손 팜 뮤트로 타격감을 살리고, 왼손은 5번줄에서 간단한 멜로디를 얹어 진행합니다.",
+      "tags": ["srv", "low-string-riff", "palm-mute", "blues"],
+      "alphaTex": "\\title \"SRV Style Low E Riff\"\n\\tempo 140\n.\n:8 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} |\n:8 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} 2.5{pm} 3.5{pm} 0.6{pm} r |\n:8 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} |\n:4 0.6{v} r |"
+    },
+    {
+      "id": "2026-07-08-04",
+      "title": "SRV풍 프라이드 앤 조이 스타일 오프닝 릭",
+      "key": "E major",
+      "style": "Blues",
+      "difficulty": "Advanced",
+      "bpm": 140,
+      "theory": "펜타토닉 스케일을 빠르게 오가는 트리플릿 런과 강한 다운피킹이 특징인 텍사스 셔플 오프닝 릭입니다. 손목의 스윙감을 살려 리듬이 뒤로 밀리지 않게 정확한 타이밍으로 연습하세요.",
+      "tags": ["srv", "pride-and-joy-style", "triplet-run", "blues"],
+      "alphaTex": "\\title \"SRV Style Shuffle Opening Lick\"\n\\tempo 140\n.\n:8 0.4 2.4 3.4 0.3 2.3 0.3 2.4 0.4 |\n:8 0.4 2.4 3.4 0.3 2.3 0.3 2.4 0.4 |\n:8 0.4 2.4 3.4 0.3 2.3 3.3 0.2 2.2 |\n:4 0.2{b (0 4)}{v} r |"
+    },
+    {
+      "id": "2026-07-08-05",
+      "title": "SRV풍 텍사스 플러드 슬로우 블루스 릭",
+      "key": "C minor",
+      "style": "Blues",
+      "difficulty": "Advanced",
+      "bpm": 60,
+      "theory": "느린 12/8 슬로우 블루스에서 벤드를 정점까지 끌어올린 뒤 오래 유지하며 감정을 쏟아내는 SRV의 대표적인 슬로우 블루스 어프로치입니다. 벤드의 정확한 피치와 넓고 강한 비브라토가 표현의 핵심입니다.",
+      "tags": ["srv", "texas-flood-style", "slow-blues", "advanced"],
+      "alphaTex": "\\title \"SRV Style Slow Blues Lick\"\n\\tempo 60\n.\n:2 8.2{b (0 4)}{v} |\n:4 6.1 8.1 |\n:2 6.1{b (0 2)}{v} |\n:8 r r 6.1 8.1{h} r r r r |"
+    }
+  ]
+}

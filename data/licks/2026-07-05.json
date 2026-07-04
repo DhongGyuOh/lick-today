@@ -1,0 +1,60 @@
+{
+  "date": "2026-07-05",
+  "licks": [
+    {
+      "id": "2026-07-05-01",
+      "title": "ii-V-I 비밥 스케일 라인",
+      "key": "C major",
+      "style": "Jazz",
+      "difficulty": "Advanced",
+      "bpm": 110,
+      "theory": "Dm7 - G7 - Cmaj7 진행 위에 비밥 스케일(도미넌트에 반음 하나를 추가한 8음 스케일)을 얹은 대표적인 재즈 라인입니다. 각 코드의 3음과 7음에 강박이 오도록 리듬을 배치하는 것이 비밥 라인의 핵심 원칙입니다.",
+      "tags": ["ii-v-i", "bebop-scale", "jazz", "advanced"],
+      "alphaTex": "\\title \"ii V I Bebop Scale Line\"\n\\tempo 110\n.\n:8 1.2 3.2 0.1 1.1 3.1 0.2 1.2 3.2 |\n:8 0.1 1.1{h} 3.1 0.2 1.2 0.1 1.1 3.1 |"
+    },
+    {
+      "id": "2026-07-05-02",
+      "title": "얼터드 도미넌트 텐션 릭",
+      "key": "G7alt",
+      "style": "Jazz",
+      "difficulty": "Advanced",
+      "bpm": 100,
+      "theory": "G7 얼터드(G7alt) 코드 위에서 b9, #9, #5 같은 얼터드 텐션을 강조하는 릭입니다. 다음 코드(Cmaj7)로 해결되기 직전 긴장감을 최대로 끌어올리는 것이 이 라인의 목적으로, 텐션 음을 살짝 늘려 강조하며 연주하세요.",
+      "tags": ["altered-dominant", "tension", "jazz", "advanced"],
+      "alphaTex": "\\title \"Altered Dominant Tension Lick\"\n\\tempo 100\n.\n:8 3.2 4.2 6.2 3.1 4.1 6.1 3.2 r |\n:4 0.1{v} r |"
+    },
+    {
+      "id": "2026-07-05-03",
+      "title": "크로매틱 인클로저 어프로치 릭",
+      "key": "F major",
+      "style": "Jazz",
+      "difficulty": "Intermediate",
+      "bpm": 90,
+      "theory": "타겟 노트를 위아래에서 반음으로 감싸듯 접근하는 크로매틱 인클로저(enclosure) 기법입니다. 비밥 보컬리스트와 혼 플레이어들이 즐겨 쓰는 어휘를 기타로 옮긴 것으로, 타겟 음에 도착했을 때 명확하게 강세를 주는 것이 중요합니다.",
+      "tags": ["chromatic-enclosure", "approach-notes", "jazz", "bebop"],
+      "alphaTex": "\\title \"Chromatic Enclosure Approach Lick\"\n\\tempo 90\n.\n:8 3.3 4.3 1.3 2.3 3.3 r r r |\n:8 5.2 6.2 3.2 4.2 5.2 r r r |"
+    },
+    {
+      "id": "2026-07-05-04",
+      "title": "메이저7 아르페지오 스트링 스킵 릭",
+      "key": "C major",
+      "style": "Jazz",
+      "difficulty": "Intermediate",
+      "bpm": 105,
+      "theory": "Cmaj7 아르페지오(도-미-솔-시)를 줄을 건너뛰며 넓은 음역으로 펼치는 스트링 스킵 릭입니다. 드롭2 보이싱에서 자주 나타나는 인터벌 구조를 단선율로 표현한 것으로, 넓은 도약 구간에서도 음정이 정확하도록 천천히 연습하세요.",
+      "tags": ["arpeggio", "string-skipping", "drop2", "jazz"],
+      "alphaTex": "\\title \"Maj7 Arpeggio String Skip Lick\"\n\\tempo 105\n.\n:8 3.3 0.2 4.1 0.1 4.1 0.2 3.3 r |\n:4 5.4{h} r |"
+    },
+    {
+      "id": "2026-07-05-05",
+      "title": "디센딩 비밥 스케일 러닝 릭",
+      "key": "A minor",
+      "style": "Jazz",
+      "difficulty": "Advanced",
+      "bpm": 115,
+      "theory": "Am7(도리안) 위에서 하행하는 8분음표 런에 크로매틱 패싱 톤을 하나 끼워 넣어 비밥 특유의 스윙감을 만든 릭입니다. 하행 라인이 다음 마디 강박에 코드 톤으로 정확히 떨어지도록 리듬을 맞춰 연습하는 것이 핵심입니다.",
+      "tags": ["bebop-scale", "descending-run", "dorian", "jazz"],
+      "alphaTex": "\\title \"Descending Bebop Scale Run\"\n\\tempo 115\n.\n:8 5.2 3.2 2.2 0.2 3.3 1.3 0.3 r |\n:8 0.4 2.4 0.3 1.3 0.3 r r r |"
+    }
+  ]
+}
