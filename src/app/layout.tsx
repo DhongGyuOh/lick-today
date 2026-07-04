@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <footer className="border-t border-neutral-800 py-6 text-center text-xs text-neutral-500">
           매일 AI가 생성한 기타 릭 5개를 공유합니다.
         </footer>
+        <SpeedInsights />
       </body>
     </html>
   );
