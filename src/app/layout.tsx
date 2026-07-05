@@ -17,12 +17,6 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-neutral-950 text-neutral-100 font-sans">
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6387613955151148"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <header className="border-b border-neutral-800">
           <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
             <Link href="/" className="text-lg font-bold tracking-tight">
