@@ -51,6 +51,11 @@ export default function HomePage() {
                 {lick.difficulty}
               </span>
             </div>
+            {lick.hasDrums && (
+              <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-purple-500/15 text-purple-300 font-medium">
+                🥁 드럼 백킹
+              </span>
+            )}
             <p className="text-sm text-neutral-500 mt-3 line-clamp-2">
               {lick.theory}
             </p>

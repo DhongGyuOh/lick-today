@@ -1,12 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { model } from "@coderline/alphatab";
 
 interface Props {
   alphaTex: string;
 }
 
-// next.config.ts의 basePath와 동일한 값을 사용해 GitHub Pages 서브패스에서도
+interface TrackUiState {
+  index: number;
+  name: string;
+  isPercussion: boolean;
+  isMuted: boolean;
+  isSolo: boolean;
+  volume: number; // 0 ~ 1.5
+}
+
+// next.config.ts의 basePath와 동일한 값을 사용해 서브패스 배포에서도
 // 정적 에셋(font/soundfont/worker)을 올바르게 찾도록 합니다.
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -37,6 +47,13 @@ async function ensureAlphaTabMainInitialized(alphaTab: typeof import("@coderline
   );
 }
 
+function formatTime(ms: number) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
 export default function AlphaTabPlayer({ alphaTex }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const apiRef = useRef<import("@coderline/alphatab").AlphaTabApi | null>(null);
@@ -44,6 +61,9 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
   const [isReady, setIsReady] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentTime, setCurrentTime] = useState(0); // ms
+  const [endTime, setEndTime] = useState(0); // ms
+  const [tracks, setTracks] = useState<TrackUiState[]>([]);
 
   useEffect(() => {
     let cancelled = false; // StrictMode/재렌더로 effect가 두 번 도는 것을 방어
@@ -92,6 +112,24 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
         setIsReady(true);
       });
       api.playerStateChanged.on((e) => setIsPlaying(e.state === 1));
+      api.playerPositionChanged.on((e) => {
+        setCurrentTime(e.currentTime);
+        setEndTime(e.endTime);
+      });
+      // 악보(스코어)가 로드되면 실제 트랙 목록으로 믹서 패널을 구성.
+      // 트랙이 1개뿐이면(드럼 없는 기존 릭) 패널 자체를 숨김.
+      api.scoreLoaded.on((score) => {
+        setTracks(
+          score.tracks.map((t) => ({
+            index: t.index,
+            name: t.name || (t.isPercussion ? "Drums" : `Track ${t.index + 1}`),
+            isPercussion: t.isPercussion,
+            isMuted: t.playbackInfo.isMute,
+            isSolo: t.playbackInfo.isSolo,
+            volume: 1,
+          }))
+        );
+      });
 
       api.tex(alphaTex);
     })();
@@ -109,6 +147,49 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
 
   const handleStop = () => {
     apiRef.current?.stop();
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const api = apiRef.current;
+    if (!api) return;
+    const ms = Number(e.target.value);
+    api.timePosition = ms;
+    setCurrentTime(ms); // 슬라이더 조작 즉시 반영 (다음 tick에서 실제 값으로 다시 갱신됨)
+  };
+
+  const findTrack = (index: number): model.Track | undefined =>
+    apiRef.current?.score?.tracks.find((t) => t.index === index);
+
+  const toggleMute = (index: number) => {
+    const api = apiRef.current;
+    const track = findTrack(index);
+    if (!api || !track) return;
+    const next = !track.playbackInfo.isMute;
+    api.changeTrackMute([track], next);
+    setTracks((prev) =>
+      prev.map((t) => (t.index === index ? { ...t, isMuted: next } : t))
+    );
+  };
+
+  const toggleSolo = (index: number) => {
+    const api = apiRef.current;
+    const track = findTrack(index);
+    if (!api || !track) return;
+    const next = !track.playbackInfo.isSolo;
+    api.changeTrackSolo([track], next);
+    setTracks((prev) =>
+      prev.map((t) => (t.index === index ? { ...t, isSolo: next } : t))
+    );
+  };
+
+  const changeVolume = (index: number, volume: number) => {
+    const api = apiRef.current;
+    const track = findTrack(index);
+    if (!api || !track) return;
+    api.changeTrackVolume([track], volume);
+    setTracks((prev) =>
+      prev.map((t) => (t.index === index ? { ...t, volume } : t))
+    );
   };
 
   return (
@@ -135,6 +216,69 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
         )}
         {error && <span className="text-sm text-red-500">{error}</span>}
       </div>
+
+      {isReady && (
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-xs text-neutral-400 w-10 text-right tabular-nums">
+            {formatTime(currentTime)}
+          </span>
+          <input
+            type="range"
+            min={0}
+            max={endTime || 0}
+            value={currentTime}
+            onChange={handleSeek}
+            className="flex-1 accent-orange-600 cursor-pointer"
+          />
+          <span className="text-xs text-neutral-400 w-10 tabular-nums">
+            {formatTime(endTime)}
+          </span>
+        </div>
+      )}
+
+      {/* 트랙이 2개 이상(예: 기타 + 드럼)일 때만 믹서 패널 표시 */}
+      {isReady && tracks.length > 1 && (
+        <div className="grid gap-2 mb-3 rounded-lg border border-neutral-800 bg-neutral-900/60 p-3">
+          {tracks.map((t) => (
+            <div key={t.index} className="flex items-center gap-3">
+              <span className="text-sm text-neutral-300 w-20 shrink-0 truncate">
+                {t.isPercussion ? "🥁 " : "🎸 "}
+                {t.name}
+              </span>
+              <button
+                onClick={() => toggleMute(t.index)}
+                className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
+                  t.isMuted
+                    ? "bg-red-600 text-white"
+                    : "bg-neutral-700 text-neutral-300 hover:bg-neutral-600"
+                }`}
+              >
+                Mute
+              </button>
+              <button
+                onClick={() => toggleSolo(t.index)}
+                className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
+                  t.isSolo
+                    ? "bg-green-600 text-white"
+                    : "bg-neutral-700 text-neutral-300 hover:bg-neutral-600"
+                }`}
+              >
+                Solo
+              </button>
+              <input
+                type="range"
+                min={0}
+                max={1.5}
+                step={0.05}
+                value={t.volume}
+                onChange={(e) => changeVolume(t.index, Number(e.target.value))}
+                className="flex-1 accent-orange-600 cursor-pointer"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
       <div
         ref={containerRef}
         className="w-full min-h-[120px] overflow-x-auto bg-white rounded-lg p-2"
@@ -142,4 +286,3 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
     </div>
   );
 }
-

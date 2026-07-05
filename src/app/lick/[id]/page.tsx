@@ -35,6 +35,11 @@ export default async function LickDetailPage({
           {lick.key} · {lick.style} · {lick.bpm} BPM · {lick.difficulty}
         </p>
         <div className="flex gap-2 mt-3 flex-wrap">
+          {lick.hasDrums && (
+            <span className="text-xs px-2 py-1 rounded-full bg-purple-500/15 text-purple-300 font-medium">
+              🥁 드럼 백킹
+            </span>
+          )}
           {lick.tags.map((tag) => (
             <span
               key={tag}

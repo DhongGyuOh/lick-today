@@ -14,3 +14,30 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* alphaTab 재생 커서 스타일
+   enableCursor: true로 설정하면 alphaTab이 이 클래스를 가진 div를 자동으로
+   렌더링 영역 위에 만들어줌. CSS가 없으면 투명해서 안 보이는 것뿐이라 여기서
+   직접 색/스타일을 지정해야 화면에 나타남. */
+
+/* 현재 재생 중인 마디(bar) 전체를 옅게 하이라이트 (스크린샷의 노란 블록) */
+.at-cursor-bar {
+  background: rgba(255, 242, 0, 0.15);
+}
+
+/* 현재 재생 중인 박자(beat) 위치를 나타내는 세로선 (스크린샷의 파란 선) */
+.at-cursor-beat {
+  background: rgba(64, 64, 255, 0.75);
+  width: 3px;
+}
+
+/* 마우스로 재생 범위를 선택했을 때 표시되는 영역 (선택 기능은 아직 미사용이지만 미리 추가) */
+.at-selection div {
+  background: rgba(64, 64, 255, 0.1);
+}
+
+/* SVG 렌더링 모드에서 현재 재생 중인 음표 자체를 강조 (선택 사항, 커서와 함께 쓰면 더 눈에 띔) */
+.at-highlight * {
+  fill: #ff8c00;
+  stroke: #ff8c00;
+}

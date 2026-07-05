@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:gh": "cross-env GITHUB_PAGES=true next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate-alphatex": "node scripts/validate-alphatex.mjs"
   },
   "dependencies": {
     "@coderline/alphatab": "^1.8.3",
     "@vercel/speed-insights": "^2.0.0",
-    "next": "16.2.10",
+    "next": "^16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -21,7 +21,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",

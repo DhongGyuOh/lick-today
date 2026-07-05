@@ -1,0 +1,41 @@
+{
+  "date": "2026-07-09",
+  "licks": [
+    {
+      "id": "2026-07-09-01",
+      "title": "블루스 셔플 with 드럼 백킹",
+      "key": "A major",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 120,
+      "theory": "12마디 블루스의 기본 셔플 리프를 드럼 백킹과 함께 연습할 수 있는 릭입니다. 드럼은 킥-하이햇-스네어-하이햇을 반복하는 기본 셔플 패턴으로, 기타 리프가 이 그루브 위에 정확히 얹히는지 확인하며 연습하세요.",
+      "tags": ["shuffle", "blues", "drums", "backing-track"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Blues Shuffle with Drums\"\n\\tempo 120\n.\n\\track \"Guitar\"\n:8 0.5 2.5 0.5 2.5 0.5 2.5 0.5 2.5 |\n:8 0.5 2.5 0.5 2.5 0.5 2.5 0.5 2.5 |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |"
+    },
+    {
+      "id": "2026-07-09-02",
+      "title": "펜타토닉 그루브 릭 with 드럼",
+      "key": "E minor",
+      "style": "Rock",
+      "difficulty": "Intermediate",
+      "bpm": 100,
+      "theory": "E 마이너 펜타토닉 기반의 그루브 릭에 록 비트 드럼을 얹은 릭입니다. 드럼은 킥-스네어가 명확히 강박을 잡아주는 4비트 록 패턴으로, 기타 프레이징의 리듬감을 드럼과 맞춰 연습하기 좋습니다.",
+      "tags": ["pentatonic", "rock", "drums", "groove"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Pentatonic Groove with Drums\"\n\\tempo 100\n.\n\\track \"Guitar\"\n:8 0.6 3.6 0.5 2.5 0.6 3.6 0.5 2.5 |\n:8 0.4 2.4 0.3 2.3 0.4 2.4 0.3 2.3 |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |"
+    },
+    {
+      "id": "2026-07-09-03",
+      "title": "펑크 옥타브 릭 with 드럼",
+      "key": "C major",
+      "style": "Funk",
+      "difficulty": "Intermediate",
+      "bpm": 105,
+      "theory": "옥타브 주법 펑크 릭에 신코페이션이 들어간 펑크 드럼 패턴을 더한 릭입니다. 드럼의 하이햇이 촘촘하게 16비트로 깔리는 동안 기타는 그 위에서 여백을 살려 연주하는 것이 펑크 앙상블의 핵심입니다.",
+      "tags": ["funk", "octaves", "drums", "syncopation"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Funk Octave Groove with Drums\"\n\\tempo 105\n.\n\\track \"Guitar\"\n:8 3.5 3.3 5.5 5.3 3.5 3.3 0.5 r |\n:8 3.5 3.3 5.5 5.3 3.5 3.3 0.5 r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 36 38 42 |\n:8 36 42 38 42 36 36 38 42 |"
+    }
+  ]
+}
