@@ -1,0 +1,17 @@
+{
+  "date": "2026-07-12",
+  "licks": [
+    {
+      "id": "2026-07-12-01",
+      "title": "펜타토닉 해머링 상행 연습 릭 (백킹+드럼 포함)",
+      "key": "A minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 130,
+      "theory": "마이너 펜타토닉 스케일을 포지션별로 해머링하며 상행하는 연습용 릭입니다. 각 포지션마다 낮은 음에서 해머링으로 올라간 뒤 다음 포지션으로 넘어가는 구조를 4마디 동안 반복하며, 손가락 힘만으로 음을 끌어올리는 왼손 지구력 훈련에 좋습니다. 백킹 기타는 리드가 움직이는 포지션에 맞춰 코드를 짚어주고, 드럼은 곡을 이끄는 단순한 8비트 그루브로 받쳐줍니다.",
+      "tags": ["pentatonic", "hammer-on", "position-shift", "exercise", "backing-guitar"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Pentatonic Hammer-On Ascending Exercise\"\n\\tempo 130\n.\n\\track \"Lead Guitar\"\n:8 5.3{h} 7.3 5.2{h} 7.2 5.3{h} 7.3 5.2{h} 7.2 |\n:8 5.2{h} 8.2 5.1{h} 8.1 5.2{h} 8.2 5.1{h} 8.1 |\n:8 5.1{h} 8.1 5.2{h} 8.2 7.2{h} 9.2 7.1{h} 9.1 |\n:8 7.1{h} 10.1 7.2{h} 10.2 7.1{v} r r r |\n\\track \"Backing Guitar\"\n:8 (5.6 5.5 7.4) r r r (5.6 5.5 7.4) r r r |\n:8 (5.6 5.5 7.4) r r r (5.6 5.5 7.4) r r r |\n:8 (7.6 7.5 9.4) r r r (7.6 7.5 9.4) r r r |\n:8 (7.6 7.5 9.4) r r r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 (38 42) 42 (36 42) 42 (38 42) 42 |\n:8 (36 42) 42 (38 42) 42 (36 42) 42 (38 42) 42 |\n:8 (36 42) 42 (38 42) 42 (36 42) 42 (38 42) 42 |\n:8 (36 42) 42 (38 42) 42 (36 42) 42 (38 42) 42 |"
+    }
+  ]
+}

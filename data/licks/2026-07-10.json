@@ -1,0 +1,125 @@
+{
+  "date": "2026-07-10",
+  "licks": [
+    {
+      "id": "2026-07-10-01",
+      "title": "블루스 턴어라운드 릭",
+      "key": "A minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 90,
+      "theory": "곡의 마지막 4마디(턴어라운드)에서 자연스럽게 나올 법한 릭입니다. 첫 두 마디는 공백을 두고 벤드로 울린 뒤, 마지막 두 마디에서 빠르게 하행하며 정리합니다. 음을 촘촘히 채우지 않고 쉼표로 숨 쉬는 구간을 만드는 게 핵심입니다.",
+      "tags": ["turnaround", "blues", "phrasing", "space"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Blues Turnaround Lick\"\n\\tempo 90\n.\n:8 r r 5.3 7.3{b (0 4)}{v} r r r r |\n:8 5.2 7.2{h} 5.2 r r r r r |\n:4 5.1{b (0 4)}{v} r |\n:8 3.1 5.1{sl} 7.1 5.1 3.1 0.1 r r |"
+    },
+    {
+      "id": "2026-07-10-02",
+      "title": "콜앤리스폰스 마이너 블루스 릭",
+      "key": "E minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 84,
+      "theory": "짧은 질문(콜)을 던지고 쉬었다가 대답(리스폰스)하는 전형적인 블루스 프레이징입니다. 실제 연주에서 한 마디를 통째로 음으로 채우는 경우는 드물고, 이렇게 절반은 비워두는 게 훨씬 자연스럽습니다.",
+      "tags": ["call-and-response", "minor-blues", "phrasing"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Call and Response Minor Blues\"\n\\tempo 84\n.\n:8 0.2 3.2{b (0 4)}{v} r r r r r r |\n:8 r r r r 0.2 3.2 0.1 r |\n:8 0.2 3.2{b (0 4)}{v} r r r r r r |\n:4 0.1 r |"
+    },
+    {
+      "id": "2026-07-10-03",
+      "title": "보컬 벤드 사이잉 릭",
+      "key": "G minor",
+      "style": "Blues",
+      "difficulty": "Advanced",
+      "bpm": 70,
+      "theory": "사람 목소리처럼 길게 우는 벤드 하나로 마디 전체를 채우고, 뒤에서 짧게 흘러내리는 러닝으로 정리하는 릭입니다. 벤드의 피치를 목표음에 정확히 맞추고, 벤드가 정점에 도달한 뒤부터 비브라토를 시작하는 타이밍이 중요합니다.",
+      "tags": ["vocal-bend", "crying-lick", "slow-blues"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Vocal Bend Crying Lick\"\n\\tempo 70\n.\n:2 8.2{b (0 4)}{v} |\n:4 6.1 8.1{h} |\n:2 6.1{b (0 2)}{v} |\n:8 r r 6.1 8.1{h} 6.1 5.1 r r |"
+    },
+    {
+      "id": "2026-07-10-04",
+      "title": "락 파워 그루브 브레이크 릭",
+      "key": "E minor",
+      "style": "Rock",
+      "difficulty": "Intermediate",
+      "bpm": 130,
+      "theory": "로우 스트링 팜뮤트 그루브로 긴장을 쌓다가 하이 스트링에서 벤드로 터뜨리는 락 솔로의 전형적인 시작부입니다. 실제 밴드 연주에서 리듬 파트가 잠깐 빠지는 '브레이크' 구간에 자주 쓰이는 패턴입니다.",
+      "tags": ["rock", "palm-mute", "breakdown", "bend"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Rock Power Groove Break\"\n\\tempo 130\n.\n:8 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} r r |\n:8 0.6{pm} 0.6{pm} 3.6{pm} 0.6{pm} 5.6{pm} r r r |\n:4 7.2{b (0 4)}{v} r |\n:8 5.2 7.2{h} 5.2 r r r r r |"
+    },
+    {
+      "id": "2026-07-10-05",
+      "title": "셔플 픽업 노트 솔로 인트로",
+      "key": "A major",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 118,
+      "theory": "솔로가 시작되기 직전 마디 끝에서 살짝 앞당겨 들어오는 픽업 노트로 시작하는 릭입니다. 셔플 특유의 스윙감이 있는 곡에서 드럼 필 직후 기타가 들어오는 타이밍을 흉내낸 구조입니다.",
+      "tags": ["shuffle", "pickup-notes", "solo-intro", "blues"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Shuffle Pickup Note Intro\"\n\\tempo 118\n.\n:8 r r r r r 2.3 4.3 5.3 |\n:8 4.3 2.3 4.2{h} 2.2 4.2 2.2 r r |\n:4 5.3{b (0 4)}{v} r |\n:8 4.3 2.3 0.3 r r r r r |"
+    },
+    {
+      "id": "2026-07-10-06",
+      "title": "마이너 블루스 더블스탑 클로징 릭",
+      "key": "D minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 88,
+      "theory": "솔로의 한 프레이즈를 더블스탑(두 음 동시 연주)으로 마무리하는 릭입니다. 단선율로 흐르던 프레이즈가 갑자기 두꺼워지면서 문장이 끝난다는 느낌을 주는, 실제 솔로에서 자주 쓰이는 마무리 방식입니다.",
+      "tags": ["minor-blues", "double-stop", "phrase-ending"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Minor Blues Double Stop Closing\"\n\\tempo 88\n.\n:8 5.3 7.3{h} 5.3 r 5.2 7.2{h} 5.2 r |\n:8 r r 5.3 7.3 r r r r |\n:4 (5.2 5.1) r |\n:2 (3.2 3.1){v} |"
+    },
+    {
+      "id": "2026-07-10-07",
+      "title": "컨트리 블루스 슬라이드 하이브리드 릭",
+      "key": "G major",
+      "style": "Country",
+      "difficulty": "Intermediate",
+      "bpm": 100,
+      "theory": "슬라이드로 음과 음을 매끄럽게 연결한 뒤, 마지막에 살짝 어긋난 셋잇 리듬으로 착지하는 컨트리-블루스 하이브리드 릭입니다. 실제 세션에서 인트로나 벌스 사이 필인으로 자주 쓰이는 느낌으로 만들었습니다.",
+      "tags": ["country-blues", "slide", "hybrid-picking", "fill"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Country Blues Slide Hybrid Lick\"\n\\tempo 100\n.\n:8 2.3{sl} 4.3 5.3 4.3 2.3 0.3 r r |\n:8 0.2{sl} 2.2 3.2 2.2 0.2 r r r |\n:8 0.3 2.3 3.3 2.3 0.3 r r r |\n:4 0.2{v} r |"
+    },
+    {
+      "id": "2026-07-10-08",
+      "title": "락 발라드 클라이맥스 서스테인 릭",
+      "key": "C major",
+      "style": "Rock",
+      "difficulty": "Advanced",
+      "bpm": 76,
+      "theory": "발라드 곡 후렴 직전, 감정을 최고조로 끌어올리는 지점에서 쓸 법한 릭입니다. 벤드로 목표음까지 끌어올린 뒤 오랫동안 서스테인하며 비브라토를 거는 것이 핵심이고, 그 뒤로 짧게 하행하며 다음 파트로 넘어갈 여지를 남깁니다.",
+      "tags": ["rock-ballad", "climax", "sustain", "vibrato"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Rock Ballad Climax Sustain\"\n\\tempo 76\n.\n:1 8.1{b (0 4)}{v} |\n:2 8.1{v} r |\n:4 8.1{h} 5.1 8.1{h} 5.1 |\n:8 5.1 3.1 1.1 0.1 r r r r |"
+    },
+    {
+      "id": "2026-07-10-09",
+      "title": "업템포 하이 포지션 런 릭",
+      "key": "B minor",
+      "style": "Rock",
+      "difficulty": "Advanced",
+      "bpm": 150,
+      "theory": "빠른 템포의 록/퓨전 솔로에서 하이 포지션으로 순간적으로 치고 올라갔다가, 낮은 포지션으로 빠르게 돌아오는 구조입니다. 실제 솔로에서 긴장감을 만들기 위해 한두 마디만 짧게 쓰는 '스파이크' 성격의 프레이즈입니다.",
+      "tags": ["uptempo", "high-position", "spike-phrase", "rock"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Uptempo High Position Run\"\n\\tempo 150\n.\n:8 r r 14.1 16.1{h} 14.1 12.1 r r |\n:8 14.2 16.2{h} 14.2 12.2 r r r r |\n:4 16.1{b (0 4)}{v} r |\n:8 14.1 12.1 9.1 7.1 r r r r |"
+    },
+    {
+      "id": "2026-07-10-10",
+      "title": "엔딩 리졸브 슬라이드 릭",
+      "key": "A major",
+      "style": "Blues",
+      "difficulty": "Beginner",
+      "bpm": 95,
+      "theory": "곡이나 솔로가 끝나기 직전 루트음으로 슬라이드해서 안착하는, 가장 흔하게 쓰이는 엔딩 패턴 중 하나입니다. 마지막 음에서 충분히 길게 서스테인하며 비브라토로 마무리하는 것이 자연스러운 종결감을 만듭니다.",
+      "tags": ["ending", "resolve", "slide", "beginner-friendly"],
+      "hasDrums": false,
+      "alphaTex": "\\title \"Ending Resolve Slide Lick\"\n\\tempo 95\n.\n:8 5.3 4.3 2.3 0.3 r r r r |\n:8 3.2 2.2 0.2 r r r r r |\n:4 2.1{sl} 0.1 |\n:1 0.1{v} |"
+    }
+  ]
+}
