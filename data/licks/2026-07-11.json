@@ -2,93 +2,64 @@
   "date": "2026-07-11",
   "licks": [
     {
-      "id": "2026-07-11-01",
-      "title": "12/8 셔플 풀벤드 릭 (백킹 기타 포함)",
-      "key": "A7",
+      "id": "2026-07-11-pent-01",
+      "title": "A Minor Pentatonic Classic Box 1 Bend Lick",
+      "key": "A minor",
       "style": "Blues",
-      "difficulty": "Advanced",
-      "bpm": 120,
-      "theory": "12/8 슬로우 셔플에서 뮤트노트(x)로 그루브를 만든 뒤 온음(풀) 벤드로 터뜨리는 릭입니다. 리드 기타 아래에 A7 코드를 스탭으로 찍어주는 백킹 기타 트랙을 추가해서, 실제 밴드에서 리듬 파트와 함께 연주되는 느낌을 살렸습니다.",
-      "tags": [
-        "12-8-shuffle",
-        "full-bend",
-        "muted-note",
-        "backing-guitar",
-        "advanced"
-      ],
+      "difficulty": "Intermediate",
+      "bpm": 112,
+      "theory": "A Minor Pentatonic (Box 1)에서 가장 많이 쓰이는 풀벤드 + 풀오프 패턴. 실제 블루스 연주에서 리드의 기본 어휘로 자주 등장하는 클래식 릭입니다.",
+      "tags": ["minor-pentatonic", "box1", "full-bend", "classic-blues", "shuffle"],
       "hasDrums": true,
-      "alphaTex": "\\title \"12/8 Shuffle Full Bend Lick\"\n\\ts 12 8\n\\tempo 120\n.\n\\track \"Lead Guitar\"\n:8 5.3{x} 5.3{x} 7.3{b (0 4)}{v} r r r 5.2{x} 5.2{x} 7.2{h} 5.2 r r |\n:8 5.3 7.3{b (0 2)}{v} r r r r r r r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"A Minor Pentatonic Classic Box 1 Bend Lick\"\n\\ts 12 8\n\\tempo 112\n.\n\\track \"Lead Guitar\"\n:8 5.3{x} 5.3{x} 8.3{b(0 4)}{v} 5.3 8.3{b(0 4)}{v} 5.3 r r |\n:8 8.2 10.2{b(0 4)}{v} 8.2 5.2 8.2{h} 5.2 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
     },
     {
-      "id": "2026-07-11-02",
-      "title": "E7 뮤트 그루브 클라이맥스 릭 (백킹 기타 포함)",
-      "key": "E7",
+      "id": "2026-07-11-pent-02",
+      "title": "A Minor Pentatonic Descending Run",
+      "key": "A minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
+      "bpm": 108,
+      "theory": "박스 1에서 박스 2로 내려가는 descending 펜타토닉 런. 셔플 그루브에서 자연스럽게 연결되며, 실제 솔로에서 전환구간에 자주 사용됩니다.",
+      "tags": ["minor-pentatonic", "descending", "run", "shuffle"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"A Minor Pentatonic Descending Run\"\n\\ts 12 8\n\\tempo 108\n.\n\\track \"Lead Guitar\"\n:8 8.3 5.3 8.3 5.3 7.2 5.2 7.2 5.2 8.1 5.1 8.1 5.1 |\n:8 7.2 5.2 7.2 5.2 5.3 8.3{b(0 2)}{v} 5.3 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+    },
+    {
+      "id": "2026-07-11-pent-03",
+      "title": "A Minor Pentatonic Repeated Bend & Release",
+      "key": "A minor",
       "style": "Blues",
       "difficulty": "Advanced",
+      "bpm": 115,
+      "theory": "같은 음을 반복적으로 풀벤드했다가 풀어주는 패턴. 감정 표현이 강하며, BB King, Eric Clapton 스타일에서 자주 들을 수 있는 표현력 높은 릭입니다.",
+      "tags": ["minor-pentatonic", "repeated-bend", "vibrato", "expressive"],
+      "hasDrums": true,
+      "alphaTex": "\\title \"A Minor Pentatonic Repeated Bend & Release\"\n\\ts 12 8\n\\tempo 115\n.\n\\track \"Lead Guitar\"\n:8 8.2{b(0 4)}{v} 8.2 8.2{b(0 4)}{v} r 5.3 8.3{b(0 4)}{v} 5.3 |\n:8 8.2{b(0 4)}{v} 8.2 7.2{h} 5.2 8.2 5.2 r r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+    },
+    {
+      "id": "2026-07-11-pent-04",
+      "title": "A Minor Pentatonic Turnaround Lick",
+      "key": "A minor",
+      "style": "Blues",
+      "difficulty": "Intermediate",
       "bpm": 110,
-      "theory": "저음줄 뮤트 피킹으로 긴장을 쌓다가 하이 포지션 풀 벤드로 클라이맥스를 만드는 릭입니다. 백킹 기타는 E7 코드를 각 마디 앞부분에서만 짧게 찍어, 리드가 여백을 채울 공간을 남겨둡니다.",
-      "tags": [
-        "e7",
-        "muted-groove",
-        "climax",
-        "backing-guitar",
-        "advanced"
-      ],
+      "theory": "턴어라운드에서 자주 쓰이는 펜타토닉 마무리 릭. 5번에서 4번, 3번 프렛으로 내려가며 자연스럽게 V-IV-I로 해소됩니다.",
+      "tags": ["minor-pentatonic", "turnaround", "resolution", "blues"],
       "hasDrums": true,
-      "alphaTex": "\\title \"E7 Muted Groove Climax Lick\"\n\\ts 12 8\n\\tempo 110\n.\n\\track \"Lead Guitar\"\n:8 0.6{x} 0.6{x} 2.6{x} 0.6{x} r r 9.2 11.2{b (0 4)}{v} r r r r |\n:8 9.2 11.2{h} 9.2 r r r r r r r r r |\n\\track \"Backing Guitar\"\n:8 (2.4 1.3 0.2) r r r r r r r r r r r |\n:8 (2.4 1.3 0.2) r r r r r r r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"A Minor Pentatonic Turnaround Lick\"\n\\ts 12 8\n\\tempo 110\n.\n\\track \"Lead Guitar\"\n:8 5.3 8.3 5.3 8.3 7.2 5.2 7.2 5.2 5.1 8.1{b(0 2)}{v} 5.1 r |\n:8 5.3{x} 5.3{x} 7.3 5.3 8.2{h} 5.2 7.2 5.2 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
     },
     {
-      "id": "2026-07-11-03",
-      "title": "Dm 슬로우 블루스 하프벤드 릭 (백킹 기타 포함)",
-      "key": "D minor",
+      "id": "2026-07-11-pent-05",
+      "title": "A Minor Pentatonic Sliding Double Stop",
+      "key": "A minor",
       "style": "Blues",
       "difficulty": "Advanced",
-      "bpm": 76,
-      "theory": "느린 12/8 블루스에서 하프(반음) 벤드와 해머-풀을 섞어 우는 듯한 뉘앙스를 만드는 릭입니다. 백킹 기타는 Dm 코드를 마디 내내 길게 눌러 서스테인하며, 리드가 그 위에서 자유롭게 노래하도록 공간을 줍니다.",
-      "tags": [
-        "dm-blues",
-        "half-bend",
-        "slow-blues",
-        "backing-guitar",
-        "advanced"
-      ],
+      "bpm": 105,
+      "theory": "더블스탑 슬라이드와 벤드를 결합한 펜타토닉 릭. SRV, Jimi Hendrix 스타일에서 자주 등장하는 강한 그루브와 표현력을 가진 패턴입니다.",
+      "tags": ["minor-pentatonic", "double-stop", "slide", "groove"],
       "hasDrums": true,
-      "alphaTex": "\\title \"Dm Slow Blues Half Bend Lick\"\n\\ts 12 8\n\\tempo 76\n.\n\\track \"Lead Guitar\"\n:8 r r 8.2{b (0 2)}{v} r r r 6.1 8.1{h} 6.1 r r r |\n:8 r r 6.1{b (0 2)}{v} r r r r r r r r r |\n\\track \"Backing Guitar\"\n:8 (0.3 2.2 3.1) r r r r r r r r r r r |\n:8 (0.3 2.2 3.1) r r r r r r r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
-    },
-    {
-      "id": "2026-07-11-04",
-      "title": "G 컨트리 블루스 슬라이드 릭 (백킹 기타 포함)",
-      "key": "G major",
-      "style": "Country",
-      "difficulty": "Advanced",
-      "bpm": 100,
-      "theory": "슬라이드로 음을 이어붙이며 12/8의 셋잇 리듬감을 살린 컨트리 블루스 릭입니다. 백킹 기타가 G 코드를 각 마디 1박, 3박에 짧게 찍어줘서 리드 슬라이드 프레이즈의 타이밍이 더 선명하게 들립니다.",
-      "tags": [
-        "g-country-blues",
-        "slide",
-        "backing-guitar",
-        "advanced"
-      ],
-      "hasDrums": true,
-      "alphaTex": "\\title \"G Country Blues Slide Lick\"\n\\ts 12 8\n\\tempo 100\n.\n\\track \"Lead Guitar\"\n:8 3.3{sl} 5.3 3.3 0.3 r r 3.2{sl} 5.2 3.2 0.2 r r |\n:8 0.1 2.1{h} 0.1 r r r r r r r r r |\n\\track \"Backing Guitar\"\n:8 (0.5 0.4 0.3) r r r r r (0.5 0.4 0.3) r r r r r |\n:8 (0.5 0.4 0.3) r r r r r (0.5 0.4 0.3) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
-    },
-    {
-      "id": "2026-07-11-05",
-      "title": "B7 턴어라운드 뮤트 릭 (백킹 기타 포함)",
-      "key": "B7",
-      "style": "Blues",
-      "difficulty": "Advanced",
-      "bpm": 118,
-      "theory": "곡 끝나기 직전 턴어라운드 구간에서 뮤트 피킹으로 긴장감을 만들다가 풀 벤드로 마무리하는 릭입니다. 백킹 기타는 B7 코드를 유지하며 리드가 완전히 해결(resolve)될 때까지 배경을 받쳐줍니다.",
-      "tags": [
-        "b7-turnaround",
-        "muted-note",
-        "full-bend",
-        "backing-guitar",
-        "advanced"
-      ],
-      "hasDrums": true,
-      "alphaTex": "\\title \"B7 Turnaround Muted Lick\"\n\\ts 12 8\n\\tempo 118\n.\n\\track \"Lead Guitar\"\n:8 2.4{x} 2.4{x} 4.4{x} 2.4{x} r r 4.3 6.3{b (0 4)}{v} r r r r |\n:8 4.3 6.3{h} 4.3 2.3 0.3 r r r r r r r |\n\\track \"Backing Guitar\"\n:8 (2.4 1.3 2.2) r r r r r r r r r r r |\n:8 (2.4 1.3 2.2) r r r r r r r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"A Minor Pentatonic Sliding Double Stop\"\n\\ts 12 8\n\\tempo 105\n.\n\\track \"Lead Guitar\"\n:8 5.3{sl}8.3 5.3{sl}8.3 7.2{sl}10.2 7.2{sl}10.2 |\n:8 8.2{b(0 4)}{v} 5.2 8.2 5.2 8.1{h}10.1 8.1 r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
     }
   ]
 }
