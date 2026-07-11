@@ -2,64 +2,97 @@
   "date": "2026-07-11",
   "licks": [
     {
-      "id": "2026-07-11-pent-01",
-      "title": "A Minor Pentatonic Classic Box 1 Bend Lick",
-      "key": "A minor",
-      "style": "Blues",
+      "id": "2026-07-11-01",
+      "title": "Texas Flood SRV Style Blues Lick (백킹+드럼 포함)",
+      "key": "E minor",
+      "style": "Texas Blues",
       "difficulty": "Intermediate",
-      "bpm": 112,
-      "theory": "A Minor Pentatonic (Box 1)에서 가장 많이 쓰이는 풀벤드 + 풀오프 패턴. 실제 블루스 연주에서 리드의 기본 어휘로 자주 등장하는 클래식 릭입니다.",
-      "tags": ["minor-pentatonic", "box1", "full-bend", "classic-blues", "shuffle"],
+      "bpm": 90,
+      "theory": "스티비 레이 본(SRV) 스타일의 강력하고 날카로운 텍사스 블루스 릭입니다. E 마이너 펜타토닉 오픈 포지션과 12프렛 박스를 오가는 형태를 취합니다. 첫 마디에서는 3번 줄 14프렛에서 1음 반(3프렛 분량)을 강하게 끌어올리는 와이드 벤딩 후, 블루 노트(Bb)를 거쳐 하행하는 프레이징이 특징입니다. 다운피킹을 강하게 하여 쟝가장하는 텍사스 특유의 톤을 살려야 합니다. 백킹 기타는 E7-A7 진행을 나타내는 파워코드로 묵직한 셔플 리듬을 타며, 드럼은 블루스 셔플(12/8 느낌 혹은 셋잇단음표 스윙 하이햇) 패턴으로 릭의 바운스를 견인합니다.",
+      "tags": [
+        "blues",
+        "srv-style",
+        "pentatonic",
+        "wide-bending",
+        "shuffle",
+        "backing-guitar"
+      ],
       "hasDrums": true,
-      "alphaTex": "\\title \"A Minor Pentatonic Classic Box 1 Bend Lick\"\n\\ts 12 8\n\\tempo 112\n.\n\\track \"Lead Guitar\"\n:8 5.3{x} 5.3{x} 8.3{b(0 4)}{v} 5.3 8.3{b(0 4)}{v} 5.3 r r |\n:8 8.2 10.2{b(0 4)}{v} 8.2 5.2 8.2{h} 5.2 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"Texas Flood SRV Style\"\n\\tempo 90\n.\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:8 12.1 15.2{b (0 4)} 12.2 12.1 15.1{v} r 12.2 14.3{b (0 2)} |\n:8 12.3 14.4 12.4 14.5 12.5 15.6{b (0 1)} 0.6 r |\n\\track \"Backing Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:4 (0.6 2.5) r (0.6 2.5) r |\n:4 (0.5 2.4) r (0.6 2.5) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |\n"
     },
     {
-      "id": "2026-07-11-pent-02",
-      "title": "A Minor Pentatonic Descending Run",
+      "id": "2026-07-11-02",
+      "title": "Liquid Tension Sweep Picking (백킹+드럼 포함)",
       "key": "A minor",
-      "style": "Blues",
-      "difficulty": "Intermediate",
-      "bpm": 108,
-      "theory": "박스 1에서 박스 2로 내려가는 descending 펜타토닉 런. 셔플 그루브에서 자연스럽게 연결되며, 실제 솔로에서 전환구간에 자주 사용됩니다.",
-      "tags": ["minor-pentatonic", "descending", "run", "shuffle"],
-      "hasDrums": true,
-      "alphaTex": "\\title \"A Minor Pentatonic Descending Run\"\n\\ts 12 8\n\\tempo 108\n.\n\\track \"Lead Guitar\"\n:8 8.3 5.3 8.3 5.3 7.2 5.2 7.2 5.2 8.1 5.1 8.1 5.1 |\n:8 7.2 5.2 7.2 5.2 5.3 8.3{b(0 2)}{v} 5.3 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
-    },
-    {
-      "id": "2026-07-11-pent-03",
-      "title": "A Minor Pentatonic Repeated Bend & Release",
-      "key": "A minor",
-      "style": "Blues",
+      "style": "Progressive Metal",
       "difficulty": "Advanced",
-      "bpm": 115,
-      "theory": "같은 음을 반복적으로 풀벤드했다가 풀어주는 패턴. 감정 표현이 강하며, BB King, Eric Clapton 스타일에서 자주 들을 수 있는 표현력 높은 릭입니다.",
-      "tags": ["minor-pentatonic", "repeated-bend", "vibrato", "expressive"],
+      "bpm": 135,
+      "theory": "드림 시어터의 존 페트루치 스타일에서 영감을 얻은 고속 스윕 피킹 릭입니다. Am - G - F - E 로 이어지는 정통 마이너 하행 코드 진행 위에서 5줄 스윕 아르페지오를 정교하게 연주합니다. 피킹할 때 빗자루로 쓸어내리듯(Sweep) 부드러운 단방향 스트로크를 유지하되, 왼손 핑거링과 완벽하게 동기화되어 각 음이 뭉개지지 않고 분리되어 들리도록 유의해야 합니다. 백킹 기타는 드라이브가 걸린 팜뮤트 루트음 파워코드로 진행의 스케일감을 극대화하며, 드럼은 스피디한 8비트 메탈 비트로 솔로의 스피드를 든든하게 보쳐줍니다.",
+      "tags": [
+        "progressive-metal",
+        "sweep-picking",
+        "arpeggio",
+        "shred",
+        "john-petrucci-style"
+      ],
       "hasDrums": true,
-      "alphaTex": "\\title \"A Minor Pentatonic Repeated Bend & Release\"\n\\ts 12 8\n\\tempo 115\n.\n\\track \"Lead Guitar\"\n:8 8.2{b(0 4)}{v} 8.2 8.2{b(0 4)}{v} r 5.3 8.3{b(0 4)}{v} 5.3 |\n:8 8.2{b(0 4)}{v} 8.2 7.2{h} 5.2 8.2 5.2 r r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"Liquid Tension Sweep\"\n\\tempo 135\n.\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:16 12.5 14.4 14.3 13.2 12.1 17.1{p} 12.1 13.2 14.3 14.4 12.5 r r r r |\n:16 10.5 12.4 12.3 12.2 10.1 15.1{p} 10.1 12.2 12.3 12.4 10.5 r r r r |\n\\track \"Backing Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:8 0.5{pm} 0.5{pm} 0.5{pm} 0.5{pm} 0.5{pm} 0.5{pm} 0.5{pm} 0.5{pm} |\n:8 3.6{pm} 3.6{pm} 3.6{pm} 3.6{pm} 3.6{pm} 3.6{pm} 3.6{pm} 3.6{pm} |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |\n"
     },
     {
-      "id": "2026-07-11-pent-04",
-      "title": "A Minor Pentatonic Turnaround Lick",
-      "key": "A minor",
-      "style": "Blues",
-      "difficulty": "Intermediate",
+      "id": "2026-07-11-03",
+      "title": "Neo-Classical Minor Scale Run (백킹+드럼 포함)",
+      "key": "E minor",
+      "style": "Neo-Classical Metal",
+      "difficulty": "Advanced",
+      "bpm": 120,
+      "theory": "잉베이 맘스틴 스타일의 대표적인 네오클래시컬 속주 릭입니다. E 하모닉 마이너 스케일을 기반으로 하며, 1번 줄과 2번 줄만 사용하여 포지션을 빠르게 수평 이동(Shift)하는 고난도 얼터네이트 피킹 패턴입니다. 특히 하모닉 마이너 특유의 증2도 음정(C에서 D#)이 주는 클래식하고 이국적인 색채가 돋보입니다. 상승 및 하행 시 피킹의 정확성과 왼손 핑거링의 이음새가 균일해야 지저분한 잡음이 나지 않습니다. 백킹 기타는 E5 파워코드를 강렬한 16분음표 팜뮤트(갈로핑 리듬)로 채우며, 드럼은 파워풀한 더블 베이스 드럼 비트로 긴장감을 더합니다.",
+      "tags": [
+        "neo-classical",
+        "harmonic-minor",
+        "alternate-picking",
+        "shred",
+        "yngwie-style"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Neo-Classical Run\"\n\\tempo 120\n.\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:16 12.1 14.1 15.1 14.1 12.1 15.2 13.2 12.2 14.2 12.2 11.2 13.3 12.3 11.3 9.3 r |\n:16 12.2 13.2 16.2 13.2 12.2 14.1 12.1 11.1 12.1 14.1 15.1 17.1 19.1{v} r r r |\n\\track \"Backing Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} |\n:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:16 36 42 42 42 38 42 42 36 36 42 42 42 38 42 42 42 |\n:16 36 42 42 42 38 42 42 36 36 42 42 42 38 42 42 42 |\n"
+    },
+    {
+      "id": "2026-07-11-04",
+      "title": "Autumn Leaves Jazz Bebop Line (백킹+드럼 포함)",
+      "key": "G major / E minor",
+      "style": "Jazz Bebop",
+      "difficulty": "Advanced",
       "bpm": 110,
-      "theory": "턴어라운드에서 자주 쓰이는 펜타토닉 마무리 릭. 5번에서 4번, 3번 프렛으로 내려가며 자연스럽게 V-IV-I로 해소됩니다.",
-      "tags": ["minor-pentatonic", "turnaround", "resolution", "blues"],
+      "theory": "재즈 스탠다드 'Autumn Leaves'의 주요 2-5-1 진행(Am7 - D7 - Gmaj7)에서 사용할 수 있는 전형적인 비밥 스케일 릭입니다. 크로매틱 어프로치(반음계적 접근음)와 가이드 톤(3도, 7도음)을 적극적으로 활용하여 세련되고 복잡한 라인을 만듭니다. 재즈 특유의 '바운스(스윙)' 느낌을 주기 위해 8분음표를 약간 밀어 연주하는 정교한 타이밍 컨트롤이 필수적입니다. 백킹 기타는 하이코드 형태의 4도 컴핑(Comping) 리듬으로 재즈 화성을 온전히 표현하며, 드럼은 스윙 리듬의 핵심인 라이드 심벌 레가토 패턴과 2, 4박에 밟히는 하이햇으로 정통 재즈 분위기를 구현합니다.",
+      "tags": [
+        "jazz",
+        "bebop",
+        "ii-v-i",
+        "chromatic",
+        "swing",
+        "comping"
+      ],
       "hasDrums": true,
-      "alphaTex": "\\title \"A Minor Pentatonic Turnaround Lick\"\n\\ts 12 8\n\\tempo 110\n.\n\\track \"Lead Guitar\"\n:8 5.3 8.3 5.3 8.3 7.2 5.2 7.2 5.2 5.1 8.1{b(0 2)}{v} 5.1 r |\n:8 5.3{x} 5.3{x} 7.3 5.3 8.2{h} 5.2 7.2 5.2 r r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"Jazz Bebop Line\"\n\\tempo 110\n.\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:8 5.3 7.3 8.3 7.3 5.3 7.4 5.4 4.4 |\n:8 5.4 7.4 4.3 5.3 7.3 7.2 8.2 10.2{v} |\n\\track \"Backing Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:4 (5.6 5.4 5.3 5.2) r (5.6 5.4 5.3 5.2) r |\n:4 (10.5 9.4 11.3 10.2) r (3.6 4.4 4.3 3.2) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 42 42 42 42 42 42 42 42 |\n:8 42 42 42 42 42 42 42 42 |\n"
     },
     {
-      "id": "2026-07-11-pent-05",
-      "title": "A Minor Pentatonic Sliding Double Stop",
-      "key": "A minor",
-      "style": "Blues",
-      "difficulty": "Advanced",
-      "bpm": 105,
-      "theory": "더블스탑 슬라이드와 벤드를 결합한 펜타토닉 릭. SRV, Jimi Hendrix 스타일에서 자주 등장하는 강한 그루브와 표현력을 가진 패턴입니다.",
-      "tags": ["minor-pentatonic", "double-stop", "slide", "groove"],
+      "id": "2026-07-11-05",
+      "title": "Comfortably Numb Melodic Arpeggio (백킹+드럼 포함)",
+      "key": "B minor",
+      "style": "Classic Rock Ballad",
+      "difficulty": "Intermediate",
+      "bpm": 68,
+      "theory": "핑크 플로이드의 데이비드 길모어 스타일을 오마주한 극도로 멜로디컬하고 서정적인 록 발라드 릭입니다. B 마이너 펜타토닉에 기반하되, 코드 톤(Arpeggio) 위주로 음을 길게 배치하여 여운을 남깁니다. 기술적으로는 서스테인을 길게 유지하면서 깊고 느린 손가락 비브라토를 주는 것이 곡의 감정선을 살리는 최고의 포인트입니다. 슬라이드를 이용해 음과 음 사이를 부드럽게 연결하는 연습에도 탁월합니다. 백킹 기타는 Bm와 A 코드를 아르페지오 형식으로 긁어주며 몽환적인 분위기를 형성하고, 드럼은 매우 정적이고 묵직한 하프타임 록 비트로 곡의 서사를 단단히 받쳐줍니다.",
+      "tags": [
+        "classic-rock",
+        "david-gilmour-style",
+        "melodic",
+        "vibrato",
+        "slide",
+        "ballad"
+      ],
       "hasDrums": true,
-      "alphaTex": "\\title \"A Minor Pentatonic Sliding Double Stop\"\n\\ts 12 8\n\\tempo 105\n.\n\\track \"Lead Guitar\"\n:8 5.3{sl}8.3 5.3{sl}8.3 7.2{sl}10.2 7.2{sl}10.2 |\n:8 8.2{b(0 4)}{v} 5.2 8.2 5.2 8.1{h}10.1 8.1 r r r |\n\\track \"Backing Guitar\"\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n:8 (0.4 2.3 0.2) r r r r r (0.4 2.3 0.2) r r r r r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |\n:8 (36 42) 42 42 (38 42) 42 42 (36 42) 42 42 (38 42) 42 42 |"
+      "alphaTex": "\\title \"Melodic Rock Ballad\"\n\\tempo 68\n.\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:4 7.3 9.3{sl} 11.3 :8 10.2 12.2 |\n:2 12.2{b (0 4)} :4 12.2{v} 10.2 r |\n\\track \"Backing Guitar\"\n\\staff{tabs}\n\\tuning e4 b3 g3 d3 a2 e2\n:8 2.5 4.4 4.3 3.2 2.5 4.4 4.3 3.2 |\n:8 0.5 2.4 2.3 2.2 0.5 2.4 2.3 2.2 |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:4 36 :8 42 42 :4 38 :8 42 42 |\n:4 36 :8 42 42 :4 38 :8 42 42 |\n"
     }
   ]
 }

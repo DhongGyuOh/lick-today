@@ -236,3 +236,7 @@ generateStaticParams()
       정적 export에서 아예 빌드가 안 됨
 - [ ] 서버 컴포넌트(`fs` 쓰는 `licks.ts` 포함)와 클라이언트 컴포넌트
       (`AlphaTabPlayer.tsx`)는 props로만 데이터를 주고받음
+
+### 첨언
+- 작곡은 Gemini 모델이 넘사벽 수준... 단, 파싱 오류를 낼 때가 있음
+- AlphaTab 파싱 검토는 클로드 코드가 잘해줌
