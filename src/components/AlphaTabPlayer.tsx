@@ -64,6 +64,8 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
   const [currentTime, setCurrentTime] = useState(0); // ms
   const [endTime, setEndTime] = useState(0); // ms
   const [tracks, setTracks] = useState<TrackUiState[]>([]);
+  // 악보(표기)에 지금 어떤 트랙을 보여줄지: "all" = 전체, number = 해당 트랙 index만 단독 표시
+  const [scoreView, setScoreView] = useState<"all" | number>("all");
 
   useEffect(() => {
     let cancelled = false; // StrictMode/재렌더로 effect가 두 번 도는 것을 방어
@@ -118,7 +120,17 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
       });
       // 악보(스코어)가 로드되면 실제 트랙 목록으로 믹서 패널을 구성.
       // 트랙이 1개뿐이면(드럼 없는 기존 릭) 패널 자체를 숨김.
+      //
+      // 주의: api.renderTracks(...)를 호출해서 "표시할 트랙"을 바꿀 때도 이 scoreLoaded
+      // 이벤트가 다시 발생하는데, 그때 넘어오는 score.tracks는 "지금 화면에 그려진 트랙"만
+      // 담고 있어서 이걸로 매번 다시 만들면 숨긴 트랙이 목록에서 통째로 사라져 버린다
+      // (= 다시 켤 방법이 없어지는 버그의 원인). 그래서 최초 1회(진짜 새 곡 로드)만 목록을
+      // 구성하고, renderTracks로 인한 재발생은 무시한다. mute/solo/volume 상태는 각 토글
+      // 핸들러가 알아서 로컬 상태를 갱신하므로 이 이벤트에 의존할 필요가 없다.
+      let hasLoadedInitialTracks = false;
       api.scoreLoaded.on((score) => {
+        if (hasLoadedInitialTracks) return;
+        hasLoadedInitialTracks = true;
         setTracks(
           score.tracks.map((t) => ({
             index: t.index,
@@ -129,6 +141,7 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
             volume: 1,
           }))
         );
+        setScoreView("all");
       });
 
       api.tex(alphaTex);
@@ -192,6 +205,25 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
     );
   };
 
+  // 악보(표기)를 특정 트랙 하나만 단독으로 보여주도록 전환합니다. "all"이면 전체 트랙을 다시 보여줍니다.
+  // mute/solo/volume(재생)과는 완전히 별개 개념이라, 여기서 화면에 안 보이는 트랙도 재생에는
+  // 그대로 포함됩니다(들리지만 악보에는 안 그려짐).
+  const showTrackInScore = (target: "all" | number) => {
+    const api = apiRef.current;
+    const score = api?.score;
+    if (!api || !score) return;
+
+    setIsRendered(false); // 다시 그려지는 동안 잠깐 로딩 표시
+    if (target === "all") {
+      api.renderTracks(score.tracks);
+    } else {
+      const track = score.tracks.find((t) => t.index === target);
+      if (!track) return;
+      api.renderTracks([track]);
+    }
+    setScoreView(target);
+  };
+
   return (
     <div className="w-full">
       <div className="flex items-center gap-3 mb-3">
@@ -236,17 +268,38 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
         </div>
       )}
 
-      {/* 트랙이 2개 이상(예: 기타 + 드럼)일 때만 믹서 패널 표시 */}
+      {/* 트랙이 2개 이상(예: 기타 + 드럼)일 때만 믹서 패널 표시.
+          트랙 이름을 누르면 그 트랙 악보만 단독으로 보여줌(선택된 트랙은 강조 표시). */}
       {isReady && tracks.length > 1 && (
         <div className="grid gap-2 mb-3 rounded-lg border border-neutral-800 bg-neutral-900/60 p-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-neutral-500">트랙을 선택하면 악보가 전환됩니다</span>
+            {scoreView !== "all" && (
+              <button
+                onClick={() => showTrackInScore("all")}
+                className="text-xs text-orange-400 hover:text-orange-300 font-medium"
+              >
+                전체 보기
+              </button>
+            )}
+          </div>
           {tracks.map((t) => (
             <div key={t.index} className="flex items-center gap-3">
-              <span className="text-sm text-neutral-300 w-20 shrink-0 truncate">
+              <button
+                onClick={() => showTrackInScore(t.index)}
+                aria-pressed={scoreView === t.index}
+                className={`flex items-center gap-1.5 w-28 shrink-0 text-left text-sm px-2 py-1 rounded transition-colors truncate ${
+                  scoreView === t.index
+                    ? "bg-orange-600 text-white"
+                    : "text-neutral-300 hover:bg-neutral-800"
+                }`}
+              >
                 {t.isPercussion ? "🥁 " : "🎸 "}
                 {t.name}
-              </span>
+              </button>
               <button
                 onClick={() => toggleMute(t.index)}
+                aria-pressed={t.isMuted}
                 className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
                   t.isMuted
                     ? "bg-red-600 text-white"
@@ -257,6 +310,7 @@ export default function AlphaTabPlayer({ alphaTex }: Props) {
               </button>
               <button
                 onClick={() => toggleSolo(t.index)}
+                aria-pressed={t.isSolo}
                 className={`text-xs px-2 py-1 rounded font-medium transition-colors ${
                   t.isSolo
                     ? "bg-green-600 text-white"
