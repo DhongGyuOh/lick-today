@@ -1,0 +1,100 @@
+{
+  "date": "2026-07-13",
+  "licks": [
+    {
+      "id": "2026-07-13-01",
+      "title": "Gravity 감성의 애틋하고 공간감 있는 슬로우 블루스 릭 (피아노+드럼 포함)",
+      "key": "G major",
+      "style": "Modern Blues",
+      "difficulty": "Intermediate",
+      "bpm": 64,
+      "theory": "존 메이어의 대표곡 'Gravity' 특유의 미니멀하면서도 묵직한 울림을 표현한 릭입니다. 2번 줄 10프렛에서 온음 벤딩 후 자연스럽게 이어지는 메이저 펜타토닉 라인이 특징입니다. 일렉트릭 피아노(Rhodes)는 화성을 둥글고 넓게 감싸 안아 따뜻함을 더하며, 드럼은 64 BPM의 아주 느린 템포 속에서 레이드백(Laid-back)된 정박 스네어로 깊은 공간감을 연출합니다.",
+      "tags": [
+        "john-mayer",
+        "slow-blues",
+        "gravity-style",
+        "bending",
+        "laid-back",
+        "backing-guitar"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Gravity Soul\"\n\\tempo 64\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:8 7.3{sl} 9.3 8.2 10.2{b (0 4)}{v} r 8.2 10.2 7.1 |\n:8 10.1{v} 7.1 10.2 8.2 9.3 7.3 5.3 r |\n\\track \"Electric Piano\" \\instrument electricpiano1\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:4 (3.6 5.5 5.4 4.3) r (5.6 7.5 7.4 5.3) r |\n:4 (3.6 5.5 5.4 4.3) r (5.6 7.5 7.4 5.3) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |"
+    },
+    {
+      "id": "2026-07-13-02",
+      "title": "Continuum 앨범 스타일의 세련된 R&B 마이너 펜타토닉 릭 (피아노+드럼 포함)",
+      "key": "C minor",
+      "style": "Neo-Soul Blues",
+      "difficulty": "Advanced",
+      "bpm": 76,
+      "theory": "존 메이어의 'I Don't Trust Myself'나 'Bold as Love' 커버에서 볼 수 있는 세련된 트라이어드 변형 및 슬라이드 하행 릭입니다. 해머온 후 바로 이어지는 고속 핑거링이 세련된 R&B 느낌을 뿜어냅니다. 일렉트릭 피아노는 네오소울 감성의 텐션 가득한 마이너 9도 화성 컴핑을 연주하며, 드럼은 스네어 오픈과 하이햇 오픈 리듬을 결합한 타이트한 네오 셔플 그루브로 세션을 빈틈없이 받쳐줍니다.",
+      "tags": [
+        "continuum-style",
+        "rnb-blues",
+        "minor-pentatonic",
+        "shred",
+        "triad",
+        "backing-guitar"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Continuum Vibe\"\n\\tempo 76\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:16 11.2{h} 13.2 11.1 13.1 11.1 13.2 11.2 12.3 10.3 12.4 10.4 13.5 10.5 r r r |\n:8 13.2{b (0 2 2 0)} 11.2 12.3 10.3 12.4 10.4 8.5 r |\n\\track \"Electric Piano\" \\instrument electricpiano1\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:4 (3.5 5.4 3.3 4.2) r (1.5 3.4 1.3 3.2) r |\n:4 (5.5 7.4 5.3 6.2) r (3.5 5.4 3.3 4.2) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 46 38 42 |\n:8 36 42 38 42 36 46 38 42 |"
+    },
+    {
+      "id": "2026-07-13-03",
+      "title": "Rosie 스타일의 위트 넘치는 펑키 슬랩 & 더블스탑 리프 (피아노+드럼 포함)",
+      "key": "A minor",
+      "style": "Funk Blues",
+      "difficulty": "Advanced",
+      "bpm": 94,
+      "theory": "최신 존 메이어 스타일인 'Rosie'나 'New Light' 스타일의 경쾌하면서도 재지한 펑크 블루스 릭입니다. 화음 내부의 개별 노트에 걸린 정교한 슬라이드 테크닉이 그루브의 생명입니다. 브라이트한 어쿠스틱 피아노가 스타카토로 통통 튀는 화성을 리드미컬하게 찍어주고, 드럼은 16비트 고스트 노트를 연상시키는 펑키한 고속 '쿵치따치' 비트로 리드 기타와 한 몸처럼 유기적으로 엮여 들어갑니다.",
+      "tags": [
+        "funk-blues",
+        "rosie-style",
+        "double-stop",
+        "slap-riff",
+        "groove",
+        "backing-guitar"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Rosie Funky Groove\"\n\\tempo 94\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:4 (5.3{sl} 5.2{sl}) (7.3 6.2) (9.3{v} 8.2{v}) r |\n:8 8.2 5.2 7.3 5.3 7.4 5.4 0.6 r |\n\\track \"Electric Piano\" \\instrument acousticgrandpiano\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:8 5.5 5.5 r 7.5 7.5 r 8.5 r |\n:8 5.5 5.5 r 3.5 3.5 r 5.5 r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 46 36 42 38 42 |\n:8 36 42 38 42 36 46 38 42 |"
+    },
+    {
+      "id": "2026-07-13-04",
+      "title": "가슴 깊은 곳을 찌르는 정통 록 블루스 스태디움 솔로 (피아노+드럼 포함)",
+      "key": "D minor",
+      "style": "Blues Rock",
+      "difficulty": "Intermediate",
+      "bpm": 82,
+      "theory": "존 메이어가 공연 후반부에서 선보이는 폭발적인 에너지를 담아낸 트랙입니다. 1번 줄 13프렛에서 시작되는 시원한 온음 초킹 후 유지하는 비브라토가 대중의 감성을 관통합니다. 피아노는 웅장한 록 발라드풍 오픈 화음으로 기타의 배경을 거대하게 밀어 올려 주며, 드럼 역시 크래시 심벌(49)로 화려하게 첫 박을 터트린 후 파워풀한 백비트를 구사하여 솔로의 스케일을 배로 불려줍니다.",
+      "tags": [
+        "stadium-blues",
+        "rock-ballad",
+        "choking",
+        "climax",
+        "power-solo",
+        "backing-guitar"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"Stadium Climax Blues\"\n\\tempo 82\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:8 13.1{b (0 4)}{v} 10.1 13.2 10.2 12.3 10.3 12.4 r |\n:8 12.3 10.3 12.4 10.4 12.5 10.5 0.6 r |\n\\track \"Electric Piano\" \\instrument acousticgrandpiano\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:4 (0.4 2.3 3.2 1.1) r (1.6 3.5 3.4) r |\n:4 (1.6 3.5 3.4) r (3.5 2.4 0.3) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 49 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |"
+    },
+    {
+      "id": "2026-07-13-05",
+      "title": "따뜻하고 서정적인 LA 어쿠스틱 감성의 E 메이저 릭 (피아노+드럼 포함)",
+      "key": "E major",
+      "style": "Acoustic Pop",
+      "difficulty": "Beginner",
+      "bpm": 88,
+      "theory": "존 메이어의 'Daughters'나 'In Your Atmosphere'에서 느껴지는 편안하고 서정적인 미드 템포 릭입니다. 기교를 최소화하는 대신 멜로디 위주로 전개되어 부드럽고 따스한 느낌을 연출합니다. 피아노는 탑노트가 예쁘게 반짝이는 아르페지오 형태의 패드로 서정성을 극대화하며, 드럼은 림샷 느낌의 단정한 하이햇 위주 플레이로 과하지 않고 조용하게 전반적인 세션을 에스코트합니다.",
+      "tags": [
+        "la-sensibility",
+        "acoustic-pop",
+        "warm-melody",
+        "e-major",
+        "beginner",
+        "backing-guitar"
+      ],
+      "hasDrums": true,
+      "alphaTex": "\\title \"LA Warm Atmosphere\"\n\\tempo 88\n\\track \"Lead Guitar\"\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:8 9.1{v} 7.1 9.2 7.2 9.3 8.3 6.3 r |\n:8 7.2{v} 9.2 7.1 9.1 7.1 9.2 0.6 r |\n\\track \"Electric Piano\" \\instrument pad2warm\n\\staff{tabs}\n\\tuning(e4 b3 g3 d3 a2 e2)\n:4 (0.6 2.5 2.4 1.3) r (4.6 6.5 6.4 4.3) r |\n:4 (2.6 4.5 4.4 2.3) r (0.6 2.5 2.4 1.3) r |\n\\track \"Drums\" \\instrument percussion \\clef neutral\n:8 36 42 38 42 36 42 38 42 |\n:8 36 42 38 42 36 42 38 42 |"
+    }
+  ]
+}
