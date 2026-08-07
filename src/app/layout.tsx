@@ -32,6 +32,18 @@ export default function RootLayout({
               >
                 아카이브
               </Link>
+              <Link
+                href="/scale"
+                className="hover:text-white transition-colors"
+              >
+                스케일
+              </Link>
+              <Link
+                href="/theory"
+                className="hover:text-white transition-colors"
+              >
+                음악이론
+              </Link>
             </nav>
           </div>
         </header>
