@@ -39,6 +39,12 @@ export default function RootLayout({
                 스케일
               </Link>
               <Link
+                href="/chords"
+                className="hover:text-white transition-colors"
+              >
+                코드
+              </Link>
+              <Link
                 href="/theory"
                 className="hover:text-white transition-colors"
               >

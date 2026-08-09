@@ -21,36 +21,36 @@ export default function TheoryPage() {
       name: "C",
       root: "루트 · 5번줄 3프렛",
       notes: [
-        { s: 1, f: 3, root: true },
-        { s: 2, f: 2 },
-        { s: 3, f: 0 },
-        { s: 4, f: 1 },
-        { s: 5, f: 0 },
+        { s: 0, f: 0 },              // string 1 fret 0 = E (3rd)
+        { s: 1, f: 1, root: true },  // string 2 fret 1 = C (root)
+        { s: 2, f: 0 },              // string 3 fret 0 = G (5th)
+        { s: 3, f: 2 },              // string 4 fret 2 = E (3rd)
+        { s: 4, f: 3, root: true },  // string 5 fret 3 = C (root)
       ],
-      muted: [0],
+      muted: [5],
     },
     {
       name: "A",
       root: "루트 · 5번줄 개방",
       notes: [
-        { s: 1, f: 0, root: true },
-        { s: 2, f: 2 },
-        { s: 3, f: 2 },
-        { s: 4, f: 2 },
-        { s: 5, f: 0 },
+        { s: 0, f: 0 },              // string 1 fret 0 = E (5th)
+        { s: 1, f: 2 },              // string 2 fret 2 = C# (3rd)
+        { s: 2, f: 2, root: true },  // string 3 fret 2 = A (root)
+        { s: 3, f: 2 },              // string 4 fret 2 = E (5th)
+        { s: 4, f: 0, root: true },  // string 5 fret 0 = A (root)
       ],
-      muted: [0],
+      muted: [5],
     },
     {
       name: "G",
       root: "루트 · 6번줄 3프렛",
       notes: [
-        { s: 0, f: 3, root: true },
-        { s: 1, f: 0 },
-        { s: 2, f: 0 },
-        { s: 3, f: 0 },
-        { s: 4, f: 0 },
-        { s: 5, f: 3 },
+        { s: 0, f: 3, root: true },  // string 1 fret 3 = G (root)
+        { s: 1, f: 0 },              // string 2 fret 0 = B (3rd)
+        { s: 2, f: 0, root: true },  // string 3 fret 0 = G (root)
+        { s: 3, f: 0 },              // string 4 fret 0 = D (5th)
+        { s: 4, f: 2 },              // string 5 fret 2 = B (3rd)
+        { s: 5, f: 3, root: true },  // string 6 fret 3 = G (root)
       ],
       muted: [],
     },
@@ -58,12 +58,12 @@ export default function TheoryPage() {
       name: "E",
       root: "루트 · 6번줄 개방",
       notes: [
-        { s: 0, f: 0, root: true },
-        { s: 1, f: 2 },
-        { s: 2, f: 2 },
-        { s: 3, f: 1 },
-        { s: 4, f: 0 },
-        { s: 5, f: 0 },
+        { s: 0, f: 0, root: true },  // string 1 fret 0 = E (root)
+        { s: 1, f: 0 },              // string 2 fret 0 = B (5th)
+        { s: 2, f: 1 },              // string 3 fret 1 = G# (3rd)
+        { s: 3, f: 2, root: true },  // string 4 fret 2 = E (root)
+        { s: 4, f: 2 },              // string 5 fret 2 = B (5th)
+        { s: 5, f: 0, root: true },  // string 6 fret 0 = E (root)
       ],
       muted: [],
     },
@@ -71,12 +71,12 @@ export default function TheoryPage() {
       name: "D",
       root: "루트 · 4번줄 개방",
       notes: [
-        { s: 2, f: 0, root: true },
-        { s: 3, f: 2 },
-        { s: 4, f: 3 },
-        { s: 5, f: 2 },
+        { s: 0, f: 2 },              // string 1 fret 2 = F# (3rd)
+        { s: 1, f: 3, root: true },  // string 2 fret 3 = D (root)
+        { s: 2, f: 2 },              // string 3 fret 2 = A (5th)
+        { s: 3, f: 0, root: true },  // string 4 fret 0 = D (root)
       ],
-      muted: [0, 1],
+      muted: [4, 5],
     },
   ];
 
@@ -1039,7 +1039,7 @@ export default function TheoryPage() {
                         key={i}
                         cx={x}
                         cy={y}
-                        r={n.root ? 11 : 9}
+                        r={9}
                         fill={n.root ? "#f97316" : "#3b82f6"}
                         opacity="0.9"
                       />
