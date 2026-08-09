@@ -45,6 +45,18 @@ export default function RootLayout({
                 코드
               </Link>
               <Link
+                href="/ddalggak"
+                className="hover:text-white transition-colors"
+              >
+                딸깍
+              </Link>
+              <Link
+                href="/quiz"
+                className="hover:text-white transition-colors"
+              >
+                퀴즈
+              </Link>
+              <Link
                 href="/theory"
                 className="hover:text-white transition-colors"
               >
