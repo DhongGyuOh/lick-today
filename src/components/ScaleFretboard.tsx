@@ -15,12 +15,23 @@ export type KeyRoot =
   | "Bb"
   | "B";
 
-export type ScaleType = "major" | "minor" | "harmonic-minor";
+export type ScaleType = "major" | "minor" | "harmonic-minor" | "major-pentatonic" | "minor-pentatonic" | "major-hexatonic" | "minor-hexatonic" | "ionian" | "dorian" | "phrygian" | "lydian" | "mixolydian" | "aeolian" | "locrian";
 
 export const SCALE_TYPE_LABELS: Record<ScaleType, string> = {
   major: "메이저",
   minor: "마이너",
   "harmonic-minor": "하모닉 마이너",
+  "major-pentatonic": "메이저 펜타토닉",
+  "minor-pentatonic": "마이너 펜타토닉",
+  "major-hexatonic": "메이저 헥사토닉",
+  "minor-hexatonic": "마이너 헥사토닉",
+  "ionian": "이오니안",
+  "dorian": "도리안",
+  "phrygian": "프리지안",
+  "lydian": "리디안",
+  "mixolydian": "믹소리디안",
+  "aeolian": "에올리안",
+  "locrian": "로크리안",
 };
 
 export const KEYS: KeyRoot[] = [
@@ -94,7 +105,104 @@ export function getScale(root: KeyRoot, type: ScaleType): string[] {
       return MINOR_SCALES[root];
     case "harmonic-minor":
       return HARMONIC_MINOR_SCALES[root];
+    case "major-pentatonic":
+      return getMajorPentatonic(root);
+    case "minor-pentatonic":
+      return getMinorPentatonic(root);
+    case "major-hexatonic":
+      return getMajorHexatonic(root);
+    case "minor-hexatonic":
+      return getMinorHexatonic(root);
+    case "ionian":
+      return getIonian(root);
+    case "dorian":
+      return getDorian(root);
+    case "phrygian":
+      return getPhrygian(root);
+    case "lydian":
+      return getLydian(root);
+    case "mixolydian":
+      return getMixolydian(root);
+    case "aeolian":
+      return getAeolian(root);
+    case "locrian":
+      return getLocrian(root);
   }
+}
+
+/** 반음 배열 */
+const CHROMATIC = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+
+/** 키별 루트 반음 */
+const KEY_ROOTS: Record<KeyRoot, number> = {
+  C: 0, Db: 1, D: 2, Eb: 3, E: 4, F: 5, "F#": 6,
+  G: 7, Ab: 8, A: 9, Bb: 10, B: 11,
+};
+
+/** 메이저 펜타토닉: 1 2 3 5 6 */
+function getMajorPentatonic(root: KeyRoot): string[] {
+  const intervals = [0, 2, 4, 7, 9];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 마이너 펜타토닉: 1 b3 4 5 b7 */
+function getMinorPentatonic(root: KeyRoot): string[] {
+  const intervals = [0, 3, 5, 7, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 메이저 헥사토닉: 1 2 3 4 5 6 (메이저 스케일에서 7도 제거) */
+function getMajorHexatonic(root: KeyRoot): string[] {
+  const intervals = [0, 2, 4, 5, 7, 9];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 마이너 헥사토닉(블루스): 1 b3 4 b5 5 b7 */
+function getMinorHexatonic(root: KeyRoot): string[] {
+  const intervals = [0, 3, 5, 6, 7, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 믹소리디안: 1 2 3 4 5 6 b7 */
+function getMixolydian(root: KeyRoot): string[] {
+  const intervals = [0, 2, 4, 5, 7, 9, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 이오니안: 1 2 3 4 5 6 7 (메이저와 동일) */
+function getIonian(root: KeyRoot): string[] {
+  const intervals = [0, 2, 4, 5, 7, 9, 11];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 도리안: 1 2 b3 4 5 6 b7 */
+function getDorian(root: KeyRoot): string[] {
+  const intervals = [0, 2, 3, 5, 7, 9, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 프리지안: 1 b2 b3 4 5 b6 b7 */
+function getPhrygian(root: KeyRoot): string[] {
+  const intervals = [0, 1, 3, 5, 7, 8, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 리디안: 1 2 3 #4 5 6 7 */
+function getLydian(root: KeyRoot): string[] {
+  const intervals = [0, 2, 4, 6, 7, 9, 11];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 에올리안: 1 2 b3 4 5 b6 b7 (내추럴 마이너와 동일) */
+function getAeolian(root: KeyRoot): string[] {
+  const intervals = [0, 2, 3, 5, 7, 8, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
+}
+
+/** 로크리안: 1 b2 b3 4 b5 b6 b7 */
+function getLocrian(root: KeyRoot): string[] {
+  const intervals = [0, 1, 3, 5, 6, 8, 10];
+  return intervals.map(i => CHROMATIC[(KEY_ROOTS[root] + i) % 12]);
 }
 
 /** 도수별 색상 (다크 배경 기준) — 음계 보드와 도수 보드가 같은 색으로 대응 */
