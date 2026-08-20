@@ -20,6 +20,19 @@ export default function HomePage() {
 
   return (
     <div>
+      <section className="mb-8 overflow-hidden rounded-2xl border border-orange-600/30 bg-neutral-900 shadow-2xl shadow-orange-950/20">
+        <video
+          className="aspect-video w-full bg-neutral-950 object-cover"
+          src="/promo.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Lick Today 소개 영상"
+        />
+      </section>
+
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-1">오늘의 릭 5</h1>
         <p className="text-neutral-400 text-sm">{daily.date}</p>

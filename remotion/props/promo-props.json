@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-07",
+  "licks": [
+    {
+      "index": 1,
+      "title": "쨉쨉이 스타일의 펑키 싱코페이션 릭 (8마디 풀 세션)",
+      "key": "E minor",
+      "style": "Funk Rock",
+      "difficulty": "Intermediate",
+      "bpm": 112,
+      "hasDrums": true
+    },
+    {
+      "index": 2,
+      "title": "쨉쨉이 감성의 슬라이드 & 풀오프 멜로디 (10마디 풀 세션)",
+      "key": "G major",
+      "style": "Indie Rock",
+      "difficulty": "Beginner",
+      "bpm": 95,
+      "hasDrums": true
+    },
+    {
+      "index": 3,
+      "title": "쨉쨉이 스타일 아르페지오 & 해머온 릭 (12마디 풀 세션)",
+      "key": "D major",
+      "style": "Pop Rock",
+      "difficulty": "Intermediate",
+      "bpm": 108,
+      "hasDrums": true
+    },
+    {
+      "index": 4,
+      "title": "쨉쨉이 감성의 블루지한 펜타토닉 릭 (10마디 풀 세션)",
+      "key": "A minor",
+      "style": "Blues Rock",
+      "difficulty": "Intermediate",
+      "bpm": 100,
+      "hasDrums": true
+    },
+    {
+      "index": 5,
+      "title": "쨉쨉이 스타일의 경쾌한 더블스탑 릭 (8마디 풀 세션)",
+      "key": "C major",
+      "style": "Bright Pop",
+      "difficulty": "Advanced",
+      "bpm": 120,
+      "hasDrums": true
+    }
+  ]
+}

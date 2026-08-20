@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate-alphatex": "node scripts/validate-alphatex.mjs"
+    "validate-alphatex": "node scripts/validate-alphatex.mjs",
+    "render-promo": "node scripts/render-promo.mjs",
+    "studio": "remotion studio remotion/index.ts"
   },
   "dependencies": {
     "@coderline/alphatab": "^1.8.3",
@@ -17,12 +19,15 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.514",
+    "@remotion/google-fonts": "^4.0.514",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "remotion": "^4.0.514",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
