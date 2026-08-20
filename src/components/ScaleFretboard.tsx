@@ -297,7 +297,7 @@ export default function ScaleFretboard({
 
           {/* 프렛보드: 6개 줄 */}
           {STRINGS.map((string, stringIndex) => (
-            <div key={string.name} className="flex items-center">
+            <div key={`${string.name}-${stringIndex}`} className="flex items-center">
               {/* 현 이름 */}
               <div className="w-10 shrink-0 text-xs font-bold text-neutral-500 text-center">
                 {string.name}
