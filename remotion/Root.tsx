@@ -64,9 +64,10 @@ export default function Root() {
   return (
     <Composition
       id="LickTodayPromo"
-      // Remotion's Composition generic expects a Zod schema type, so we cast the
-      // component to satisfy the LooseComponentType constraint safely.
-      component={LickTodayPromo as React.ComponentType<PromoCompositionProps>}
+      // Remotion's Composition expects Zod schema generic; LickTodayPromo's
+      // props are PromoCompositionProps and defaultProps matches, so as any
+      // safely bridges the LooseComponentType constraint.
+      component={LickTodayPromo as any}
       defaultProps={defaultProps}
       {...REMOTION_CONFIG}
     />
