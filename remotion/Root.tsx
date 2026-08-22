@@ -1,12 +1,14 @@
 import { Composition } from "remotion";
 import LickTodayPromo from "./LickTodayPromo";
+import CircleOfFifthsScene from "./scenes/CircleOfFifthsScene";
+import ModesScene from "./scenes/ModesScene";
 import type { PromoCompositionProps } from "./types";
 
 export const REMOTION_CONFIG = {
   width: 1920,
   height: 1080,
   fps: 30,
-  durationInFrames: 360, // 12 seconds at 30fps
+  durationInFrames: 1240, // Matches public/tts.wav at ~41.3 seconds
 } as const;
 
 const defaultProps: PromoCompositionProps = {
@@ -62,14 +64,31 @@ const defaultProps: PromoCompositionProps = {
 
 export default function Root() {
   return (
-    <Composition
-      id="LickTodayPromo"
-      // Remotion's Composition expects Zod schema generic; LickTodayPromo's
-      // props are PromoCompositionProps and defaultProps matches, so as any
-      // safely bridges the LooseComponentType constraint.
-      component={LickTodayPromo as any}
-      defaultProps={defaultProps}
-      {...REMOTION_CONFIG}
-    />
+    <>
+      <Composition
+        id="LickTodayPromo"
+        component={LickTodayPromo as any}
+        defaultProps={defaultProps}
+        {...REMOTION_CONFIG}
+      />
+      <Composition
+        id="CircleOfFifths"
+        component={CircleOfFifthsScene as any}
+        defaultProps={{ durationFrames: 1707 }} // 56.9s * 30fps
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={1707}
+      />
+      <Composition
+        id="Modes"
+        component={ModesScene as any}
+        defaultProps={{ durationFrames: 1929 }} // 64.3s * 30fps
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={1929}
+      />
+    </>
   );
 }

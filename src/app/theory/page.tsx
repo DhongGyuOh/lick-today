@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroVideo from "@/components/HeroVideo";
 
 export default function TheoryPage() {
   const circlePositions = [
@@ -98,17 +99,18 @@ export default function TheoryPage() {
     { id: "chord-tone", title: "2. 코드톤 (Chord Tone)", emoji: "🎹" },
     { id: "power-chord", title: "3. 파워코드", emoji: "⚡" },
     { id: "major-diatonic", title: "4. 메이저 스케일과 다이아토닉 코드", emoji: "🎼" },
-    { id: "function", title: "5. 기능화성", emoji: "🏠" },
-    { id: "substitute", title: "6. 기능 계열과 대리코드", emoji: "🔄" },
-    { id: "progressions", title: "7. 대표적인 코드 진행", emoji: "➡️" },
-    { id: "dominant", title: "8. 도미넌트와 도미넌트7", emoji: "💥" },
-    { id: "tension", title: "9. 긴장과 해결", emoji: "🌊" },
-    { id: "relative", title: "10. 나란한조 (Relative Key)", emoji: "🔗" },
-    { id: "circle", title: "11. 5도권 (Circle of Fifths)", emoji: "⭕" },
-    { id: "harmonic-minor", title: "12. 하모닉 마이너", emoji: "🎭" },
-    { id: "minor-251", title: "13. 마이너 ii-V-i", emoji: "🌙" },
-    { id: "caged", title: "14. CAGED 시스템", emoji: "🔤" },
-    { id: "learning-order", title: "15. 코드톤 학습 순서", emoji: "📚" },
+    { id: "modes", title: "5. 모드 (Modes) - 7가지 스케일", emoji: "✨" },
+    { id: "function", title: "6. 기능화성", emoji: "🏠" },
+    { id: "substitute", title: "7. 기능 계열과 대리코드", emoji: "🔄" },
+    { id: "progressions", title: "8. 대표적인 코드 진행", emoji: "➡️" },
+    { id: "dominant", title: "9. 도미넌트와 도미넌트7", emoji: "💥" },
+    { id: "tension", title: "10. 긴장과 해결", emoji: "🌊" },
+    { id: "relative", title: "11. 나란한조 (Relative Key)", emoji: "🔗" },
+    { id: "circle", title: "12. 5도권 (Circle of Fifths)", emoji: "⭕" },
+    { id: "harmonic-minor", title: "13. 하모닉 마이너", emoji: "🎭" },
+    { id: "minor-251", title: "14. 마이너 ii-V-i", emoji: "🌙" },
+    { id: "caged", title: "15. CAGED 시스템", emoji: "🔤" },
+    { id: "learning-order", title: "16. 코드톤 학습 순서", emoji: "📚" },
   ];
 
   return (
@@ -334,7 +336,53 @@ export default function TheoryPage() {
         </div>
       </section>
 
-      {/* 5. 기능화성 */}
+      {/* 5. 모드 (Modes) */}
+      <section id="modes" className="mb-16">
+        <h2 className="text-2xl font-bold mb-4">✨ 5. 모드 (Modes) - 7가지 스케일</h2>
+        <p className="text-neutral-400 mb-6">
+          메이저 스케일에서 파생된 7가지 모드. 각 모드는 고유한 색채와 사운드를 가집니다.
+        </p>
+
+        {/* Modes Video */}
+        <div className="mb-6 overflow-hidden rounded-xl border border-purple-600/30 bg-neutral-900 shadow-2xl shadow-purple-950/20">
+          <HeroVideo src="/modes.mp4" />
+        </div>
+
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+          {[
+            { name: "이오니안 (Ionian)", short: "Major", color: "#f97316", intervals: "2-2-1-2-2-2-1", desc: "밝고 안정적인 메이저" },
+            { name: "도리안 (Dorian)", short: "Minor ♭6", color: "#fb923c", intervals: "2-1-2-2-2-1-2", desc: "재즈/펑크, 장6도" },
+            { name: "프리지안 (Phrygian)", short: "Minor ♭2", color: "#f43f5e", intervals: "1-2-2-2-1-2-2", desc: "스페인/메탈, ♭2" },
+            { name: "리디안 (Lydian)", short: "Major ♯4", color: "#a855f7", intervals: "2-2-2-1-2-2-1", desc: "몽환적, ♯4" },
+            { name: "믹소리디안 (Mixolydian)", short: "Major ♭7", color: "#3b82f6", intervals: "2-2-1-2-2-1-2", desc: "블루스/록, ♭7" },
+            { name: "에올리안 (Aeolian)", short: "Minor", color: "#22c55e", intervals: "2-1-2-2-1-2-2", desc: "내추럴 마이너" },
+            { name: "로크리안 (Locrian)", short: "Dim ♭2♭5", color: "#64748b", intervals: "1-2-2-1-2-2-2", desc: "불안정, 잘 안 씀" },
+          ].map((mode) => (
+            <div
+              key={mode.name}
+              className="p-4 rounded-xl border border-neutral-800 bg-neutral-900 text-center"
+            >
+              <div className="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: `${mode.color}20`, border: `2px solid ${mode.color}` }}>
+                <span style={{ color: mode.color }} className="font-bold text-lg">{mode.short}</span>
+              </div>
+              <div className="font-semibold text-sm mb-1">{mode.name}</div>
+              <div className="text-xs font-mono text-neutral-500 mb-2">{mode.intervals}</div>
+              <div className="text-xs text-neutral-400">{mode.desc}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-5 rounded-xl border border-purple-800/50 bg-purple-900/20">
+          <h3 className="font-semibold mb-2 text-purple-300">⭐ 모드 이해하기</h3>
+          <p className="text-sm text-neutral-400 mb-3">
+            같은 음(C D E F G A B)으로 시작음을 바꿔가며 연주하면 7가지 모드가 됩니다.
+            각 모드의 특징음(이오니안의 장3도, 도리안의 장6도, 리디안의 ♯4 등)을 강조해 연습하세요.
+          </p>
+          <div className="font-mono text-purple-400 text-sm">C 이오니안 → D 도리안 → E 프리지안 → F 리디안 → G 믹소리디안 → A 에올리안 → B 로크리안</div>
+        </div>
+      </section>
+
+      {/* 6. 기능화성 */}
       <section id="function" className="mb-16">
         <h2 className="text-2xl font-bold mb-4">🏠 5. 기능화성</h2>
         
@@ -773,6 +821,11 @@ export default function TheoryPage() {
         <p className="text-neutral-400 mb-6">
           5도 간격으로 나열된 키의 순환. 조표와 코드 진행의 관계를 한눈에 보여줍니다.
         </p>
+
+        {/* Circle of Fifths Video */}
+        <div className="mb-6 overflow-hidden rounded-xl border border-orange-600/30 bg-neutral-900 shadow-2xl shadow-orange-950/20">
+          <HeroVideo src="/circle-of-fifths.mp4" />
+        </div>
 
         <div className="mb-6 p-5 rounded-xl border border-neutral-800 bg-neutral-900">
           <svg viewBox="0 0 520 520" className="w-full max-w-lg mx-auto">

@@ -62,6 +62,12 @@ export default function RootLayout({
               >
                 음악이론
               </Link>
+              <Link
+                href="/videos"
+                className="hover:text-white transition-colors"
+              >
+                영상 가이드
+              </Link>
             </nav>
           </div>
         </header>

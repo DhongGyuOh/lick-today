@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLatestLicks } from "@/lib/licks";
+import HeroVideo from "@/components/HeroVideo";
 
 const difficultyColor: Record<string, string> = {
   Beginner: "bg-green-500/15 text-green-400",
@@ -20,18 +21,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="mb-8 overflow-hidden rounded-2xl border border-orange-600/30 bg-neutral-900 shadow-2xl shadow-orange-950/20">
-        <video
-          className="aspect-video w-full bg-neutral-950 object-cover"
-          src="/promo.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Lick Today 소개 영상"
-        />
-      </section>
+      <HeroVideo src="/promo.mp4" />
 
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-1">오늘의 릭 5</h1>

@@ -74,6 +74,8 @@ function main() {
     propsPath,
     "--codec",
     "h264",
+    "--audio-codec",
+    "aac",
     "--crf",
     "23",
     "--overwrite",
