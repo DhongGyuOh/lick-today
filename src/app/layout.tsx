@@ -63,6 +63,12 @@ export default function RootLayout({
                 음악이론
               </Link>
               <Link
+                href="/tuning"
+                className="hover:text-white transition-colors"
+              >
+                튜닝
+              </Link>
+              <Link
                 href="/videos"
                 className="hover:text-white transition-colors"
               >
