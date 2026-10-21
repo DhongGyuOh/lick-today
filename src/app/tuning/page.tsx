@@ -1,6 +1,14 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import TunerGauge from "@/components/TunerGauge";
+import {
+  centsBetween,
+  detectPitch,
+  findNearestTargetIndex,
+  noteFromFrequency,
+  semitoneFromFrequency,
+} from "@/lib/pitch";
 
 // 표준 기타 튜닝: 6 번줄(저음 E) → 1 번줄(고음 E), Hz 기준
 const STANDARD_TUNING: { readonly note: string; readonly frequency: number }[] = [
@@ -14,58 +22,20 @@ const STANDARD_TUNING: { readonly note: string; readonly frequency: number }[] =
 
 const CHROMATIC = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
-// Autocorrelation을 이용한 피치 감지 (YIN 알고리즘 기반)
-function detectPitch(buffer: Float32Array, sampleRate: number): number | null {
-  const size = buffer.length;
-  let maxSamples = Math.floor(sampleRate / 40); // 40Hz 이상만 감지
-  if (maxSamples > size) maxSamples = size;
+// 기준음 길이 (초 / 밀리초)
+const TONE_DURATION_SEC = 1.5;
+const TONE_DURATION_MS = TONE_DURATION_SEC * 1000;
 
-  let best_offset = -1;
-  let best_correlation = 0;
-  let rms = 0;
+// 마이크 분석에 사용하는 버퍼 길이 (샘플)
+// 4096 샘플 @ 44.1kHz = 약 93ms. 저음 E2(82Hz)의 주기가 약 535샘플이므로
+// 두 주기 이상이 들어가야 정확한 주기를 잡을 수 있습니다.
+const ANALYSIS_BUFFER_SIZE = 4096;
 
-  // RMS 계산 (신호 강도 체크)
-  for (let i = 0; i < size; i++) {
-    rms += buffer[i] * buffer[i];
-  }
-  rms = Math.sqrt(rms / size);
-  if (rms < 0.01) return null; // 신호가 너무 약함
-
-  // Autocorrelation 계산
-  let lastCorrelation = 1;
-  for (let lag = 1; lag < maxSamples; lag++) {
-    let sum = 0;
-    for (let index = 0; index < maxSamples; index++) {
-      sum += Math.abs(buffer[index] - buffer[index + lag]);
-    }
-    let correlation = 1 - sum / maxSamples / 2;
-    if (correlation > 0.9 && correlation > best_correlation) {
-      if (correlation > lastCorrelation) {
-        let shift = 0;
-        if (lag + 1 < maxSamples) {
-          shift =
-            (buffer[lag + 1] - buffer[lag - 1]) / (2 * (2 * buffer[lag] - buffer[lag - 1] - buffer[lag + 1]));
-        }
-        if (Math.abs(shift) < 1) {
-          best_correlation = correlation;
-          best_offset = lag + shift;
-          break;
-        }
-      }
-    }
-    lastCorrelation = correlation;
-  }
-
-  if (best_correlation > 0.85) {
-    return sampleRate / best_offset;
-  }
-  return null;
-}
-
-// Hz → 반음 인덱스 (C0 = 0)
-function semitoneFromFrequency(frequency: number): number {
-  return Math.round(12 * Math.log2(frequency / 440) + 69) - 12; // MIDI 노트 번호 → 0~11
-}
+// 감지된 음을 "몇 번 줄을 튜닝하는 중"으로 간주하는 최대 오차 (센트).
+// 게이지 표시 범위(±50센트)보다 넓게 잡습니다. 그래야 크게 어긋난 줄도
+// "너무 높음/낮음"으로 방향을 알려줄 수 있습니다. (100센트 = 반음 1개이므로
+//  이 안에 있으면 인접한 다른 줄로 착각할 여지가 없습니다.)
+const GAUGE_CENTS_LIMIT = 100;
 
 // 현재 튜닝 상태를 로컬 스토리지에 저장/읽습니다.
 const STORAGE_KEY = "lick-today-tuning";
@@ -97,47 +67,97 @@ export default function TuningPage() {
   const [isMicActive, setIsMicActive] = useState(false);
   const [detectedFreq, setDetectedFreq] = useState<number | null>(null);
   const [matchedStringIndex, setMatchedStringIndex] = useState<number | null>(null);
+  /** 목표음 대비 오차 (센트). 음을 감지하지 못했으면 null */
+  const [cents, setCents] = useState<number | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const sourceRef = useRef<MediaStreamAudioSourceNode | null>(null);
   const rafRef = useRef<number>(0);
-  const bufferLengthRef = useRef<number>(2048);
+  const bufferLengthRef = useRef<number>(ANALYSIS_BUFFER_SIZE);
+  const playingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // 튜닝 상태 변경 시 자동으로 저장 (불변 패턴)
   useEffect(() => {
     saveTuning(offsets);
   }, [offsets]);
 
-  // AudioContext 를 직접 만들어 기준음 재생 (oscillator 는 자바스크립트 생성).
-  const playReferenceTone = useCallback((index: number) => {
+  // AudioContext 는 하나만 공유해서 사용합니다.
+  // (브라우저는 동시에 열 수 있는 AudioContext 개수를 제한하기 때문에 클릭할 때마다
+  //  새로 만들면 결국 "上下文가 너무 많습니다" 오류로 소리가 끊깁니다.)
+  //  iOS/Safari 는 사용자 제스처 안에서 생성/재개하지 않으면 suspended 상태로 머물러
+  //  소리가 아예 나오지 않으므로, 반드시 resume() 을 함께 호출해야 합니다.
+  const ensureAudioContext = useCallback(async (): Promise<AudioContext | null> => {
+    // Safari 구버전의 webkitAudioContext 도 함께 지원합니다.
     const AudioCtx =
-      (window.AudioContext || (window as any).webkitAudioContext) as
-        | typeof AudioContext
-        | undefined;
+      window.AudioContext ??
+      (window as unknown as { webkitAudioContext?: typeof AudioContext })
+        .webkitAudioContext;
     if (!AudioCtx) {
       console.warn("AudioContext 를 지원하지 않는 브라우저입니다.");
-      return;
+      return null;
     }
 
-    const string = STANDARD_TUNING[index];
-    const frequency = string.frequency * Math.pow(2, (offsets[index] ?? 0) / 12);
-    if (!isFinite(frequency) || frequency <= 0) return; // NaN/Infinity 방어
-    const ctx = new AudioCtx();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "sine";
-    osc.frequency.value = frequency;
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    gain.gain.setValueAtTime(0.3, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
-    osc.start();
-    osc.stop(ctx.currentTime + 1.5);
-    setPlayingIndex(index);
-    setTimeout(() => setPlayingIndex(null), 1500);
-    ctx.close();
-  }, [offsets]);
+    // closed 상태면 새로 만들고, 살아있는 인스턴스가 있으면 재사용합니다.
+    if (!audioCtxRef.current || audioCtxRef.current.state === "closed") {
+      audioCtxRef.current = new AudioCtx();
+    }
+    const ctx = audioCtxRef.current;
+
+    if (ctx.state !== "running") {
+      try {
+        await ctx.resume();
+      } catch (err) {
+        console.warn("AudioContext 재개 실패:", err);
+      }
+    }
+    if (ctx.state !== "running") {
+      console.warn(`AudioContext 가 running 상태가 아닙니다 (state=${ctx.state}).`);
+      return null;
+    }
+    return ctx;
+  }, []);
+
+  // 기준음 재생 (oscillator 는 자바스크립트 생성).
+  const playReferenceTone = useCallback(
+    async (index: number) => {
+      const string = STANDARD_TUNING[index];
+      if (!string) return;
+
+      const frequency = string.frequency * Math.pow(2, (offsets[index] ?? 0) / 12);
+      if (!isFinite(frequency) || frequency <= 0) return; // NaN/Infinity 방어
+
+      const ctx = await ensureAudioContext();
+      if (!ctx) {
+        alert("이 브라우저에서는 오디오 재생을 지원하지 않습니다.");
+        return;
+      }
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = frequency;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      const startAt = ctx.currentTime;
+      const stopAt = startAt + TONE_DURATION_SEC;
+      // 짧게 붙었다 떨어지지 않게 20ms 정도는 유지 후 지수 감쇠
+      gain.gain.setValueAtTime(0.0001, startAt);
+      gain.gain.exponentialRampToValueAtTime(0.3, startAt + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, stopAt);
+
+      osc.start(startAt);
+      osc.stop(stopAt + 0.05);
+
+      setPlayingIndex(index);
+      const timer = setTimeout(() => {
+        setPlayingIndex((prev) => (prev === index ? null : prev));
+      }, TONE_DURATION_MS);
+      playingTimerRef.current = timer;
+    },
+    [ensureAudioContext, offsets]
+  );
 
   const setOffset = useCallback((index: number, delta: number) => {
     setOffsets((prev) => ({ ...prev, [index]: (prev[index] ?? 0) + delta }));
@@ -157,48 +177,79 @@ export default function TuningPage() {
     [offsets]
   );
 
-  // 마이크 분석 루프
+  // 마이크 분석 루프.
+  // offsets 는 매 프레임的最新 값이 필요하므로 ref 로 읽고,
+  // 재귀 호출(self reference) 대신 ref 에 담긴 함수로 다음 프레임을 예약합니다.
+  const offsetsRef = useRef<TuningState>(offsets);
+  const analyzeStepRef = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    offsetsRef.current = offsets;
+  }, [offsets]);
+
   const analyzeStep = useCallback(() => {
     if (!analyserRef.current) return;
     const buffer = new Float32Array(bufferLengthRef.current);
     analyserRef.current.getFloatTimeDomainData(buffer);
-    const freq = detectPitch(buffer, audioCtxRef.current?.sampleRate ?? 44100);
-    if (freq) {
-      setDetectedFreq(Math.round(freq * 10) / 10);
-      // 가장 가까운 스트링 찾기
-      let bestIdx = 0;
-      let bestDiff = Infinity;
-      STANDARD_TUNING.forEach((s, i) => {
-        const target = s.frequency * Math.pow(2, (offsets[i] ?? 0) / 12);
-        const diff = Math.abs(freq - target);
-        if (diff < bestDiff) {
-          bestDiff = diff;
-          bestIdx = i;
-        }
-      });
-      // 10% 이내면 매칭으로 간주
-      if (bestDiff / STANDARD_TUNING[bestIdx].frequency < 0.15) {
+    const reading = detectPitch(
+      buffer,
+      audioCtxRef.current?.sampleRate ?? 44100
+    );
+
+    if (reading) {
+      const frequency = reading.frequency;
+      setDetectedFreq(Math.round(frequency * 10) / 10);
+
+      // 현재 조정 상태를 반영한 각 줄의 목표 주파수
+      const currentOffsets = offsetsRef.current;
+      const targets = STANDARD_TUNING.map(
+        (s, i) => s.frequency * Math.pow(2, (currentOffsets[i] ?? 0) / 12)
+      );
+
+      // 감지된 음과 가장 가까운(센트 기준) 줄을 찾습니다.
+      const bestIdx = findNearestTargetIndex(frequency, targets);
+      const cents = centsBetween(frequency, targets[bestIdx]);
+
+      // 게이지 표시 범위(±100센트) 안이면 그 줄을 튜닝하는 것으로 봅니다.
+      // 범위를 벗어나면 "방향만 알려주고" 줄 매칭은 하지 않습니다.
+      // (예: 6번 줄을 튜닝하는데 4번 줄 소리를 들은 경우 등)
+      if (Math.abs(cents) <= GAUGE_CENTS_LIMIT) {
         setMatchedStringIndex(bestIdx);
+        setCents(Math.round(cents * 10) / 10);
       } else {
         setMatchedStringIndex(null);
+        setCents(null);
       }
     } else {
       setDetectedFreq(null);
       setMatchedStringIndex(null);
+      setCents(null);
     }
-    rafRef.current = requestAnimationFrame(analyzeStep);
-  }, [offsets]);
+    rafRef.current = requestAnimationFrame(() => analyzeStepRef.current());
+  }, []);
+
+  useEffect(() => {
+    analyzeStepRef.current = analyzeStep;
+  }, [analyzeStep]);
 
   const startMic = useCallback(async () => {
     try {
+      // AudioContext 는 사용자 제스처(클릭) 안에서 생성/재개해야 합니다.
+      // 마이크 권한 프롬프트로 await 를 걸면 제스처 컨텍스트가 끊겨서 suspended 로
+      //  남을 수 있으므로, 권한 요청보다 먼저 컨텍스트를 준비합니다.
+      const ctx = await ensureAudioContext();
+      if (!ctx) {
+        alert("이 브라우저에서는 오디오 입력을 지원하지 않습니다.");
+        return;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaStreamRef.current = stream;
-      const AudioCtx = (window.AudioContext || (window as any).webkitAudioContext) as typeof AudioContext | undefined;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-      audioCtxRef.current = ctx;
+
       const analyser = ctx.createAnalyser();
-      analyser.fftSize = 4096;
+      // getFloatTimeDomainData 로 얻는 버퍼 길이는 fftSize / 2 이므로,
+      // 저음줄의 두 주기가 들어가도록 4096 샘플을 확보합니다.
+      analyser.fftSize = ANALYSIS_BUFFER_SIZE;
       analyser.smoothingTimeConstant = 0.8;
       analyserRef.current = analyser;
       bufferLengthRef.current = analyser.fftSize / 2;
@@ -212,25 +263,39 @@ export default function TuningPage() {
       console.error("마이크 접근 실패:", e);
       alert("마이크 접근이 거부되었습니다. 브라우저 권한을 확인해주세요.");
     }
-  }, [analyzeStep]);
+  }, [analyzeStep, ensureAudioContext]);
 
+  // 마이크만 정지합니다. AudioContext 는 기준음 재생과 공유하므로 여기서 닫지 않습니다.
   const stopMic = useCallback(() => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+    }
     if (mediaStreamRef.current) {
       mediaStreamRef.current.getTracks().forEach((t) => t.stop());
       mediaStreamRef.current = null;
     }
     if (sourceRef.current) { sourceRef.current.disconnect(); sourceRef.current = null; }
     if (analyserRef.current) analyserRef.current = null;
-    if (audioCtxRef.current) { audioCtxRef.current.close(); audioCtxRef.current = null; }
     setIsMicActive(false);
     setDetectedFreq(null);
     setMatchedStringIndex(null);
+    setCents(null);
   }, []);
 
-  // 컴포넌트 언마운트 시 정리
+  // 컴포넌트 언마운트 시 정리 (마이크 정지 + 공유 AudioContext 닫기)
   useEffect(() => {
-    return () => stopMic();
+    return () => {
+      stopMic();
+      if (playingTimerRef.current) {
+        clearTimeout(playingTimerRef.current);
+        playingTimerRef.current = null;
+      }
+      if (audioCtxRef.current) {
+        void audioCtxRef.current.close().catch(() => {});
+        audioCtxRef.current = null;
+      }
+    };
   }, [stopMic]);
 
   // 현재 튜닝 상태의 alphaTab 튜닝 문자열 (alphaTex) — 표준값도 동적으로 생성하여 항상 일치
@@ -264,15 +329,31 @@ export default function TuningPage() {
           </button>
         </div>
         {isMicActive && (
-          <div className="mt-4 p-3 bg-neutral-800 rounded-lg flex items-center gap-4">
-            <span className="text-sm text-neutral-400">감지된 피치:</span>
-            <span className="text-xl font-bold text-orange-400">
-              {detectedFreq ? `${detectedFreq} Hz` : "---"}
-            </span>
-            {matchedStringIndex !== null && (
-              <span className="text-sm bg-green-500/20 text-green-400 px-2 py-1 rounded">
-                {6 - matchedStringIndex}번 줄 근처
-              </span>
+          <div className="mt-4 space-y-3">
+            <TunerGauge
+              cents={cents}
+              noteLabel={
+                detectedFreq ? noteFromFrequency(detectedFreq).label : null
+              }
+              frequency={detectedFreq}
+              targetLabel={
+                matchedStringIndex !== null
+                  ? noteFromFrequency(
+                      STANDARD_TUNING[matchedStringIndex].frequency *
+                        Math.pow(2, (offsets[matchedStringIndex] ?? 0) / 12)
+                    ).label
+                  : "—"
+              }
+              targetStringLabel={
+                matchedStringIndex !== null
+                  ? `${6 - matchedStringIndex}번 줄`
+                  : "줄을 고르세요"
+              }
+            />
+            {matchedStringIndex === null && (
+              <p className="text-xs text-neutral-500">
+                줄을 튜닝하는 중이라면 그 줄에 가까운 소리를 내보내 보세요.
+              </p>
             )}
           </div>
         )}
