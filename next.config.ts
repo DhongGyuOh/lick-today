@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 // Vercel에 배포하므로 GitHub Pages용 basePath/서브패스 설정이 필요 없습니다.
 // (과거 GitHub Pages로 배포할 때 쓰던 설정은 git 히스토리에 남아있습니다.)
 const nextConfig: NextConfig = {
-  output: "export", // 정적 export -> out/ 폴더 생성. Vercel도 정적 사이트로 그대로 서빙 가능.
+  // api 사용을 위해 동적 export를 유지합니다. (정적 export는 api 라우팅을 지원하지 않습니다.)
+  // output: "export", // 정적 export -> out/ 폴더 생성. Vercel도 정적 사이트로 그대로 서빙 가능.
   images: {
     unoptimized: true, // 정적 export에는 이미지 최적화 서버가 없음
   },
