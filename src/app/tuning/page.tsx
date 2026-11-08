@@ -20,7 +20,7 @@ const STANDARD_TUNING: { readonly note: string; readonly frequency: number }[] =
   { note: "E", frequency: 329.63 }, // 1 번줄 (가장 얇은 줄, 고음)
 ];
 
-const CHROMATIC = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+const CHROMATIC = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
 
 // 기준음 길이 (초 / 밀리초)
 const TONE_DURATION_SEC = 1.5;
@@ -444,17 +444,17 @@ export default function TuningPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3 text-center">
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center justify-center gap-2 overflow-x-auto pb-1">
                       <button
                         onClick={() => setOffset(index, -1)}
                         disabled={playingIndex !== null}
-                        className="w-8 h-8 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
+                        className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
                         aria-label="반음 내리기"
                       >
                         −
                       </button>
                       <span
-                        className={`text-sm font-mono w-10 text-center ${
+                        className={`text-sm font-mono w-10 flex-shrink-0 text-center ${
                           offset === 0
                             ? "text-neutral-500"
                             : offset > 0
@@ -467,26 +467,24 @@ export default function TuningPage() {
                       <button
                         onClick={() => setOffset(index, 1)}
                         disabled={playingIndex !== null}
-                        className="w-8 h-8 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
+                        className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
                         aria-label="반음 올리기"
                       >
                         +
                       </button>
+                      <button
+                        onClick={() => playReferenceTone(index)}
+                        disabled={playingIndex !== null}
+                        aria-label={`${6 - index} 번 줄 기준음 듣기`}
+                        className={`px-3 py-1.5 flex-shrink-0 rounded-md text-sm font-medium transition-colors ${
+                          playingIndex === index
+                            ? "bg-orange-600 text-white cursor-wait"
+                            : "bg-orange-600 text-white hover:bg-orange-700"
+                        }`}
+                      >
+                        {playingIndex === index ? "🔊 재생 중" : "🔊"}
+                      </button>
                     </div>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <button
-                      onClick={() => playReferenceTone(index)}
-                      disabled={playingIndex !== null}
-                      aria-label={`${6 - index} 번 줄 기준음 듣기`}
-                      className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                        playingIndex === index
-                          ? "bg-orange-600 text-white cursor-wait"
-                          : "bg-orange-600 text-white hover:bg-orange-700"
-                      }`}
-                    >
-                      {playingIndex === index ? "🔊 재생 중" : "🔊 듣기"}
-                    </button>
                   </td>
                 </tr>
               );
