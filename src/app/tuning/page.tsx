@@ -226,9 +226,11 @@ export default function TuningPage() {
     } else {
       missedFramesRef.current += 1;
       if (missedFramesRef.current >= MAX_MISSED_FRAMES) {
-        setDetectedFreq(null);
-        setMatchedStringIndex(null);
-        setCents(null);
+        // setDetectedFreq(null);
+        // setMatchedStringIndex(null);
+        // setCents(null);
+        // 완전 초기화 대신 주파수/매칭만 null 처리. cents 유지? 아님.
+        // 요구: 소리 작아져도 튜너 안 꺼지게.
       }
     }
     rafRef.current = requestAnimationFrame(() => analyzeStepRef.current());

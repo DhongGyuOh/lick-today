@@ -21,7 +21,7 @@ const MAX_FREQUENCY = 1000;
 const YIN_THRESHOLD = 0.15;
 
 /** 이보다 작은 RMS(신호 세기)이면 소리로 보지 않습니다 */
-const MIN_RMS = 0.005;
+const MIN_RMS = 0.001;
 
 export interface PitchReading {
   /** 감지된 주파수 (Hz) */
