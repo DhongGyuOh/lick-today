@@ -77,7 +77,7 @@ export default function TuningPage() {
   const bufferLengthRef = useRef<number>(ANALYSIS_BUFFER_SIZE);
   const playingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const missedFramesRef = useRef<number>(0);
-  const MAX_MISSED_FRAMES = 5;
+  const MAX_MISSED_FRAMES = 20;
 
   // 튜닝 상태 변경 시 자동으로 저장 (불변 패턴)
   useEffect(() => {
