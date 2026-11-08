@@ -76,6 +76,8 @@ export default function TuningPage() {
   const rafRef = useRef<number>(0);
   const bufferLengthRef = useRef<number>(ANALYSIS_BUFFER_SIZE);
   const playingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const missedFramesRef = useRef<number>(0);
+  const MAX_MISSED_FRAMES = 5;
 
   // 튜닝 상태 변경 시 자동으로 저장 (불변 패턴)
   useEffect(() => {
@@ -197,6 +199,7 @@ export default function TuningPage() {
     );
 
     if (reading) {
+      missedFramesRef.current = 0;
       const frequency = reading.frequency;
       setDetectedFreq(Math.round(frequency * 10) / 10);
 
@@ -221,9 +224,12 @@ export default function TuningPage() {
         setCents(null);
       }
     } else {
-      setDetectedFreq(null);
-      setMatchedStringIndex(null);
-      setCents(null);
+      missedFramesRef.current += 1;
+      if (missedFramesRef.current >= MAX_MISSED_FRAMES) {
+        setDetectedFreq(null);
+        setMatchedStringIndex(null);
+        setCents(null);
+      }
     }
     rafRef.current = requestAnimationFrame(() => analyzeStepRef.current());
   }, []);
