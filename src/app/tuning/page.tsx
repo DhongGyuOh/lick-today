@@ -368,26 +368,26 @@ export default function TuningPage() {
       </div>
 
       {/* 튜너 테이블 */}
-      <div className="rounded-xl border border-neutral-800 bg-neutral-900 overflow-hidden">
-        <table className="w-full">
+      <div className="rounded-xl border border-neutral-800 bg-neutral-900 overflow-x-auto">
+        <table className="w-full min-w-[500px]">
           <thead>
             <tr className="border-b border-neutral-800">
               <th scope="col" className="text-left px-4 py-3 text-xs font-semibold text-neutral-500">줄</th>
-              <th scope="col" className="text-left px-4 py-3 text-xs font-semibold text-neutral-500">이음</th>
+              <th scope="col" className="text-left px-4 py-3 text-xs font-semibold text-neutral-500">계</th>
               <th scope="col" className="text-left px-4 py-3 text-xs font-semibold text-neutral-500">
-                기준음 (Hz)
+                Hz
               </th>
               <th scope="col" className="text-center px-4 py-3 text-xs font-semibold text-neutral-500">
-                현재 피치
+                음
               </th>
               <th scope="col" className="text-center px-4 py-3 text-xs font-semibold text-neutral-500">
-                튜닝 상태
+                상태
               </th>
               <th scope="col" className="text-center px-4 py-3 text-xs font-semibold text-neutral-500">
                 조절
               </th>
               <th scope="col" className="text-center px-4 py-3 text-xs font-semibold text-neutral-500">
-                기준음 듣기
+                듣기
               </th>
             </tr>
           </thead>
@@ -403,7 +403,7 @@ export default function TuningPage() {
                   }`}
                 >
                   <td scope="row" className="px-4 py-3 text-sm text-neutral-300">
-                    {6 - index}번 줄
+                    {6 - index}
                   </td>
                   <td className="px-4 py-3 text-sm font-bold text-neutral-200">
                     {string.note}
@@ -437,24 +437,24 @@ export default function TuningPage() {
                       }`}
                     >
                       {offset === 0
-                        ? "🎵 제격"
+                        ? "🎵"
                         : offset > 0
-                        ? `▲ ${offset}반음`
-                        : `▼ ${Math.abs(offset)}반음`}
+                        ? `▲ ${offset}`
+                        : `▼ ${Math.abs(offset)}`}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-center">
-                    <div className="flex items-center justify-center gap-2 overflow-x-auto pb-1">
+                    <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={() => setOffset(index, -1)}
                         disabled={playingIndex !== null}
-                        className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
+                        className="w-8 h-8 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
                         aria-label="반음 내리기"
                       >
                         −
                       </button>
                       <span
-                        className={`text-sm font-mono w-10 flex-shrink-0 text-center ${
+                        className={`text-sm font-mono w-4 text-center ${
                           offset === 0
                             ? "text-neutral-500"
                             : offset > 0
@@ -467,24 +467,26 @@ export default function TuningPage() {
                       <button
                         onClick={() => setOffset(index, 1)}
                         disabled={playingIndex !== null}
-                        className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
+                        className="w-8 h-8 flex items-center justify-center rounded-md bg-neutral-800 text-neutral-300 text-lg font-bold hover:bg-neutral-700 disabled:opacity-50 transition-colors"
                         aria-label="반음 올리기"
                       >
                         +
                       </button>
-                      <button
-                        onClick={() => playReferenceTone(index)}
-                        disabled={playingIndex !== null}
-                        aria-label={`${6 - index} 번 줄 기준음 듣기`}
-                        className={`px-3 py-1.5 flex-shrink-0 rounded-md text-sm font-medium transition-colors ${
-                          playingIndex === index
-                            ? "bg-orange-600 text-white cursor-wait"
-                            : "bg-orange-600 text-white hover:bg-orange-700"
-                        }`}
-                      >
-                        {playingIndex === index ? "🔊 재생 중" : "🔊"}
-                      </button>
                     </div>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <button
+                      onClick={() => playReferenceTone(index)}
+                      disabled={playingIndex !== null}
+                      aria-label={`${6 - index} 번 줄 기준음 듣기`}
+                      className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                        playingIndex === index
+                          ? "bg-orange-600 text-white cursor-wait"
+                          : "bg-orange-600 text-white hover:bg-orange-700"
+                      }`}
+                    >
+                      {playingIndex === index ? "🎸" : "🔊"}
+                    </button>
                   </td>
                 </tr>
               );
