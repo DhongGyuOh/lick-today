@@ -2,6 +2,8 @@
 
 import { useState, useCallback, Fragment } from "react";
 import { KEYS, getScale, type KeyRoot } from "@/components/ScaleFretboard";
+import { FallingLeaves } from "falling-leaves/react";
+
 
 type QuestionType =
   | "scale-note"
@@ -374,6 +376,7 @@ export default function QuizPage() {
   if (!quizStarted) {
     return (
       <div>
+        <FallingLeaves fullScreen shapes={["maple"]} /> 
         <div className="mb-6">
           <h1 className="text-2xl font-bold mb-1">퀴즈</h1>
           <p className="text-neutral-400 text-sm">
